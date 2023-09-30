@@ -23,7 +23,6 @@ export default function RootLayout({
         <Chakra>
           <Navbar />
         <Sidebar />
-
         {children}
         </Chakra>
         

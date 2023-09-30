@@ -1,10 +1,9 @@
-import { Spacer } from "@chakra-ui/react";
+import { Spacer} from "@chakra-ui/react";
 import React from "react";
-
 const Navbar = () => {
   return (
     <div className="flex bg-slate-900 justify-end items-center p-3 gap-3 text-white">
-      <div className="order-first font-bold text-lg">TradeIn</div>
+      <div className="order-first font-bold text-lg ml-6">TradeIn</div>
        <Spacer/>
       <i className="fa-regular fa-message" style={{color:"#ffffff",fontSize:"20px"}}></i>
       <i className="fa-regular fa-bell" style={{color: "#ffffff",fontSize:"20px"}}></i>
