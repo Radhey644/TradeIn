@@ -21,8 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Chakra>
-          {/* <Navbar />
-        <Sidebar /> */}
+          <Navbar />
+        <Sidebar />
         {children}
         </Chakra>
       </body>

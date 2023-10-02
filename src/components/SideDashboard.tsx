@@ -2,7 +2,7 @@ import React from 'react'
 
 const SideDashboard = () => {
   return (
-    <div className=" bg-slate-900 mt-0 xs:invisible text-white">
+    <div className=" bg-slate-900 mt-0 w-1/4 text-white">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio natus
     numquam, commodi sint animi laudantium qui rerum exercitationem et aliquam
     eligendi modi minima laboriosam quis ratione architecto veritatis
