@@ -23,7 +23,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Chakra>
+<<<<<<< HEAD
+          <Navbar />
+        <Sidebar />
+=======
           <Home/>
+>>>>>>> 5705e7a3f2f6d00d3d9ad657ebc5ed45a94fd829
         {children}
         </Chakra>
       </body>
