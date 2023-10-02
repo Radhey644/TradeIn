@@ -2,8 +2,10 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Sidebar from "@/components/Sidebar";
 import Chakra from "@/components/Chakra";
+import Home from "@/components/Home";
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,8 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Chakra>
-          {/* <Navbar />
-        <Sidebar /> */}
+          <Home/>
         {children}
         </Chakra>
       </body>
