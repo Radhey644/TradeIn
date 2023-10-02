@@ -1,7 +1,9 @@
+import { Heading, VStack } from '@chakra-ui/react'
 import React from 'react'
 
 const SideDashboard = () => {
   return (
+<<<<<<< HEAD
     <div className=" bg-slate-900 mt-0 w-1/4 text-white">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio natus
     numquam, commodi sint animi laudantium qui rerum exercitationem et aliquam
@@ -18,6 +20,11 @@ const SideDashboard = () => {
     explicabo laboriosam eligendi repudiandae repellendus aliquam est culpa
 
     </div>
+=======
+  <VStack className='text-white h-full' gap={2} pt={4}>
+  <Heading fontSize={"2xl"} className='font'>TradeIn</Heading>
+  </VStack>
+>>>>>>> 5705e7a3f2f6d00d3d9ad657ebc5ed45a94fd829
   )
 }
 

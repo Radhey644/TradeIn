@@ -1,19 +1,25 @@
-import React from 'react'
-import './Home.css'
-import Navbar from './Navbar'
-import SideDashboard from './SideDashboard'
+import React from "react";
+import SideDashboard from "./SideDashboard";
+import Navbar from "./Navbar";
+import StockBar from "./StockBar";
+
 const Home = () => {
   return (
-    <div className="container">
-  <div className="Navbar"><Navbar/></div>
-  <div className="Dashboard"><SideDashboard/></div>
-  <div className="Stock-Details"></div>
-  <div className="Stock-Chart"></div>
-  <div className="List-of-LOT-"></div>
-  <div className="StockDetails"></div>
-  <div className="Techcnical-analysis"></div>
-</div>
-  )
-}
+    // this is the main container having both sides
+    <div className="flex flex-row bg-black">
+      {/* this is the left part of homepage */}
+      <div className="flex-none w-1/6">
+        <SideDashboard />
+      </div>
+      {/* this is the right part of homepage */}
+      <div className="flex-col flex-1">
+        
+          <Navbar />
+          <StockBar/>
+        
+      </div>
+    </div>
+  );
+};
 
-export default Home
+export default Home;
