@@ -26,13 +26,12 @@ const StockBar = () => {
       {/* this will be a group of buttons to sell and buy stocks */}
       <div className="flex-row gap-2 flex-1 items-center">
         <button
-          className={`bg-${watchlist}?white:white divide-solid border px-1 py-1 rounded-md text-xs`}
+          className={`${watchlist?"bg-white text-black border-black":"bg-transparent"} divide-solid border px-1 py-1 rounded-md text-xs active:scale-95`}
           onClick={() => {
             setWatchlist(!watchlist);
-            console.log(watchlist)
           }}
         >
-          Add to Watchlist
+          {watchlist?"Added to Watchlist":"Add to Watchlist"}
         </button>
         <button className="bg-red-400 px-5 py-1 rounded-md text-black font-bold text-sm">
           Sell
