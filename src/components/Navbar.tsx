@@ -1,9 +1,15 @@
-import { Spacer } from "@chakra-ui/react";
+import { Divider, Spacer } from "@chakra-ui/react";
 import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden ">
+        {/* <Divider
+        className="inline-block"
+          orientation="vertical" // Set the orientation to vertical
+           // Adjust the margin as needed
+          h="76px" // Adjust the height as needed
+        /> */}
       <div className="flex flex-col sm:flex-row bg-slate-900 p-2 gap-4 text-white">
         
         {/* <div className="flex-shrink-0 font-bold text-xl text-center sm:text-left self-center">
@@ -19,6 +25,7 @@ const Navbar = () => {
             Search
           </button> */}
         </div>
+        
         <Spacer/>
         {/* Spacer for small screens */}
         
