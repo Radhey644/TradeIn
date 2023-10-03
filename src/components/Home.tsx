@@ -2,6 +2,8 @@ import React from "react";
 import SideDashboard from "./SideDashboard";
 import Navbar from "./Navbar";
 import StockBar from "./StockBar";
+import Graph from "./Stock Graph & Price/Graph";
+import Price from "./Stock Graph & Price/Price";
 
 const Home = () => {
   return (
@@ -11,12 +13,18 @@ const Home = () => {
       <div className="flex-none w-1/6">
         <SideDashboard />
       </div>
+
       {/* this is the right part of homepage */}
       <div className="flex-col flex-1">
-        
-          <Navbar />
-          <StockBar/>
-        
+        <Navbar />
+        <StockBar />
+
+        {/* this part is for graph and the prices */}
+        <div className="flex text-white gap-2 xs:flex-col">
+          {/* as the graph and the prices are in same line  */}
+          <Graph />
+          <Price />
+        </div>
       </div>
     </div>
   );
