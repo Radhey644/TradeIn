@@ -5,13 +5,21 @@ import React, { useEffect, useState } from "react";
 
 const Test = () => {
   const [data, setData] = useState([]);
-  const [query,setQuery]= useState("AAPLvb nvmb vncm")
+  const [query, setQuery] = useState("");
   useEffect(() => {
-    fetch(
-      `https://api.stockdata.org/v1/data/quote?symbols=${query}&api_token=vSyIAV736hFJzHR2iy0atyKST4qHmWrE1UTQvwie`
-    )
+    fetch("https://twelve-data1.p.rapidapi.com/symbol_search", {
+      params: {
+        symbol: query,
+        outputsize: "4",
+      },
+      method: "GET",
+      // You should specify the HTTP method
+      headers: {
+        "X-RapidAPI-Key": "cc975687aemshc0763b961baa52ep1836fcjsn7d06c55309e4",
+      },
+    })
       .then((res) => {
-       return res.json();
+        return res.json();
       })
       .then((data) => {
         console.log(data);
@@ -33,12 +41,18 @@ const Test = () => {
   //   );
   return (
     <>
-      <Input placeholder="large size" size="lg" onChange={(e)=>{
-        setQuery(e.target.value)
-      }}/>
-      {data.map((item) => {
-        return <li>{item.name}</li>;
-      })}
+      <Input
+        placeholder="large size"
+        size="lg"
+        value={query}
+        onChange={(e) => {
+          setQuery(e.target.value);
+        }}
+      />
+      {data &&
+        data.map((item) => {
+          return <li>{item.instrument_name}</li>;
+        })}
     </>
   );
 };
