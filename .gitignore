@@ -42,3 +42,4 @@ tsconfig.json
 .env
 .gitignore
 tsconfig.json
+.env
