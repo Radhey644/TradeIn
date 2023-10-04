@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useToast } from "@chakra-ui/react";
-export default function LoginPage() {
 
 
 
@@ -116,7 +115,7 @@ export default function LoginPage() {
           </Link>
         </div>
       </div>
-      <h1>{loading ? "Logging you in.." : "Login"}</h1>
+      {/* <h1>{loading ? "Logging you in.." : "Login"}</h1>
       <hr />
 
       <label htmlFor="email">email</label>
@@ -143,8 +142,7 @@ export default function LoginPage() {
       >
         Login here
       </button>
-      <Link href="/signup">Visit Signup page</Link>
+      <Link href="/signup">Visit Signup page</Link> */}
     </div>
   );
-}
 }
