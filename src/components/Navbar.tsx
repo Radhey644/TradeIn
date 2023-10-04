@@ -1,26 +1,23 @@
-"use client"
+"use client";
 import { Divider, Spacer } from "@chakra-ui/react";
 import React from "react";
 import axios from "axios";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 import router from "next/router";
 
 const Navbar = () => {
-
-
   const logout = async () => {
     try {
-        await axios.get('/api/users/logout')
-        toast.success('Logout successful')
-        location.reload()
-        router.push('/login')
-        
-    } catch (error:any) {
-        console.log(error.message);
-        toast.error(error.message)
+      await axios.get("/api/users/logout");
+      toast.success("Logout successful");
+      location.reload();
+      router.push("/login");
+    } catch (error: any) {
+      console.log(error.message);
+      toast.error(error.message);
     }
-}
+  };
 
   return (
     <div className="overflow-x-hidden ">
@@ -63,7 +60,14 @@ const Navbar = () => {
             alt=""
           />
           {/* Logout button */}
-          <button onClick={logout} className="bg-green-500 hover:bg-green-700 text-white font-bold px-1.5 rounded-full">
+          <button
+            onClick={logout}
+            style={{
+              backgroundColor: "rgba(52, 211, 153, 0.4)",
+              borderRadius: "5px",
+            }}
+            className="hover:bg-green-700 text-white font-bold px-1.5"
+          >
             Logout
           </button>
           {/* <div className="flex flex-col relative -top-0.4 ">

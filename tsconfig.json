@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Sidebar.tsx", "src/app/test/page.jsx", "src/app/test/[symbol]/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Sidebar.tsx", "src/app/test/page.jsx", "src/app/test/[symbol]/page.jsx", "src/app/login/Mail.js"],
   "exclude": ["node_modules"]
 }
