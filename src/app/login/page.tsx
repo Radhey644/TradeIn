@@ -35,7 +35,6 @@ export default function LoginPage() {
       console.log(error)
       toast({
         title: error.response.data.error,
-        description: error.response.data.error,
         status: 'error',
         position:'top',
         duration: 3000,

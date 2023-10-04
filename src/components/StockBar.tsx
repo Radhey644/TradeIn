@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const StockBar = () => {
   const [watchlist, setWatchlist] = useState(false);
   return (
-    <div className="flex-row  p-3 text-white gap-4 flex-1 ">
+    <div className="flex-row  p-3 text-white gap-4 flex-1">
       <VStack className="float-left">
         <div className="flex relative right-14">
         <Heading color={"white"} fontSize={"xl"} className="-left-12 ">
