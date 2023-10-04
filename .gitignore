@@ -33,10 +33,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.env
+tsconfig.json
 bun.lockb
 .env
 package.json
 package-lock.json
+yarn.lock
+tsconfig.json
+.gitignore
+.gitignore
 yarn.lock
 tsconfig.json
 .env
