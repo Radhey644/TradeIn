@@ -1,20 +1,10 @@
 "use client"
 import Home from "@/components/Home";
+import { debounce } from "@/helpers/debounce";
 import { Input, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-// Define the debounce function
-function debounce(func, delay) {
-  let timeoutId;
-
-  return function (...args) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      func(...args);
-    }, delay);
-  };
-}
 
 const Test = () => {
   const [data, setData] = useState([]);
