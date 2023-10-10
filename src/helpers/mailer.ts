@@ -31,7 +31,7 @@ export const sendEmail = async({email, emailType, userId}:any) => {
         const mailOptions = {
             from: 'tradein09@gmail.com',
             to: email,
-            subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password",
+            subject: "Welcome to TradeIn",
             html: `
             <p>Hello ${email},</p>
             <p>Welcome to TradeIn, your platform for practicing stock trading strategies!</p>

@@ -4,6 +4,7 @@ import { debounce } from "@/helpers/debounce";
 import { Input, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Coin from "./coin";
 
 
 const Test = () => {
@@ -12,18 +13,13 @@ const Test = () => {
 
   // Create a debounced version of the function that makes API requests
   const debouncedFetchData = debounce((searchQuery) => {
-    fetch(`https://twelve-data1.p.rapidapi.com/symbol_search?symbol=${searchQuery}`, {
-      params: {
-        outputsize: "4",
-      },
+    fetch(`https://api.coingecko.com/api/v3/search?query=${searchQuery}`, {
       method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "cc975687aemshc0763b961baa52ep1836fcjsn7d06c55309e4",
-      },
     })
       .then((res) => res.json())
       .then((responseData) => {
-        setData(responseData.data);
+        console.log(responseData)
+        setData(responseData.coins);
       })
       .catch((err) => {
         console.log("Error occurred:", err);
@@ -51,21 +47,27 @@ const Test = () => {
   }
 
   return (
-    <>
+    <div className="p-2 flex-col justify-center bg-black min-h-screen">
       <Input
+      className="border-gray-600"
         placeholder="large size"
         size="lg"
+        bg={"gray.900"}
+        color={"white"}
         value={query}
         onChange={(e) => {
           setQuery(e.target.value);
         }}
       />
-      {data &&
+      <div className="flex-col">
+         {data &&
         data.map((item) => {
-          return <li className="cursor-pointer list-none" >
-            <Link href={`/test/${item.symbol}`}>{item.instrument_name}</Link></li>;
+          return <Coin Coin={item}/>
+          
         })}
-    </>
+      </div>
+     
+    </div>
   );
 };
 
