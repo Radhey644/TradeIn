@@ -8,7 +8,7 @@ import Price from "./Stock Graph & Price/Price";
 const Home = () => {
   return (
     // this is the main container having both sides
-    <div className="flex flex-row bg-black">
+    <div className="flex flex-row bg-black min-h-screen">
       {/* this is the left part of homepage */}
       <div className="flex-none w-1/6 shadow-lg bg-slate-900 border-r-2 border-slate-800 ">
         <SideDashboard />

@@ -16,27 +16,33 @@ export const sendEmail = async({email, emailType, userId}:any) => {
                 {forgotPasswordToken: hashedToken, forgotPasswordTokenExpiry: Date.now() + 3600000})
         }
 
-        var transport = nodemailer.createTransport({
-            host: "sandbox.smtp.mailtrap.io",
-            port: 2525,
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
             auth: {
-              user: "3fd364695517df",
-              pass: "7383d58fd399cf"
-              //TODO: add these credentials to .env file
-            }
+              type: 'OAuth2',
+              user: 'rahulisop135@gmail.com', // Your Gmail email address
+              clientId: '934827094292-lme7f8a93ur4s0loo8p5jivosc59to8c.apps.googleusercontent.com', // Your OAuth2 client ID
+              clientSecret: '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', // Your OAuth2 client secret
+              refreshToken: '1//04VZYXEHR-OORCgYIARAAGAQSNwF-L9Ir2UW_j7QABJIlSBlsl55MwgeJ3M7gopQZecCJKJk_T_wkpMjU5PXlZWnBALo7t_UzsX8', // Your OAuth2 refresh token
+            },
           });
 
 
         const mailOptions = {
-            from: 'pankajsingh92533@gmail.com',
+            from: 'tradein09@gmail.com',
             to: email,
             subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password",
-            html: `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"}
-            or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/verifyemail?token=${hashedToken}
-            </p>`
+            html: `
+            <p>Hello ${email},</p>
+            <p>Welcome to TradeIn, your platform for practicing stock trading strategies!</p>
+            <p>We're excited to have you on board. With TradeIn, you can trade virtual money and test your strategies risk-free.</p>
+            <p>Feel free to explore our platform and get started with virtual trading today.</p>
+            <p>Happy trading!</p>
+            <p>Best regards,<br>Your TradeIn Team</p>
+          `
         }
 
-        const mailresponse = await transport.sendMail
+        const mailresponse = await transporter.sendMail
         (mailOptions);
         return mailresponse;
 

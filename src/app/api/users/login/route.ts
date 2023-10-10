@@ -7,6 +7,7 @@ import jwt from "jsonwebtoken";
 connect()
 
 export async function POST(request: NextRequest){
+    
     try {
 
         const reqBody = await request.json()

@@ -59,7 +59,7 @@ const Graph = () => {
   return (
     <VStack className="flex-1 w-4/5 m-2">
       <LineChart
-        width={700}
+        width={500}
         height={350}
         data={data}
         margin={{
