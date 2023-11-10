@@ -4,12 +4,10 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useToast } from "@chakra-ui/react";
 
 
 
 export default function LoginPage() {
-  const toast = useToast()
   const router = useRouter();
   const [user, setUser] = React.useState({
     email: "",
@@ -20,31 +18,25 @@ export default function LoginPage() {
 
   const onLogin = async () => {
     try {
+      toast.warn("Logging In !", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose:1000
+
+      });
       setLoading(true);
       const response = await axios.post("/api/users/login", user);
       console.log("Login success", response.data); 
-      toast({
-        title: "Successfully Logged In",
-        description: "",
-        status: 'success',
-        position:'top',
-        duration: 1000,
-        isClosable: true,
-      })
       // router.push("/profile");
       router.push("/");
     } 
     catch (error:any) {
       console.log(error)
-      toast({
-        title: error.response.data.error,
-        status: 'error',
-        position:'top',
-        duration: 3000,
-        isClosable: true,
-      })
       }
      finally {
+      toast.success("Logged In ", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose:500
+      });
       setLoading(false);
     }
   };

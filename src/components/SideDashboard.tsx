@@ -4,7 +4,7 @@ import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@
 import React from "react";
 
 const SideDashboard = () => (
-  <div className=" bg-inherit min-w-[250px] shrink z-10 ">
+  <div className=" bg-inherit min-w-[250px] shrink z-10 max-w-[300px]">
     <div className="text-white h-full mr-24 gap-4">
       <div className=" flex m-2 p-2 gap-4 mb-5 z-10 top-0">
         <Avatar

@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 
 
@@ -20,6 +21,10 @@ export default function SignupPage() {
     const onSignup = async () => {
         try {
             setLoading(true);
+            toast.warn("Signing In !", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose:1000
+              });
             const response = await axios.post("/api/users/signup", user);
             console.log("Signup success", response.data);
             router.push("/login");
@@ -27,6 +32,10 @@ export default function SignupPage() {
         } catch (error:any) {
             console.log("Signup failed", error);  
         }finally {
+            toast.success("Account Created", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose:1000
+              });
             setLoading(false);
         }
     }
