@@ -22,9 +22,6 @@ const Home = () => {
         <div className="flex gap-2 xs:flex-col flex-wrap">
           {/* as the graph and the prices are in same line  */}
           <Graph />
-          <Graph />
-          <Graph />
-          <Graph />
           <Price />
         </div>
       </div>

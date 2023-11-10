@@ -62,7 +62,7 @@ const Graph = () => {
         <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
       </LineChart> */}
       <AreaChart
-      width={500}
+      width={800}
       height={400}
       data={data}
       margin={{
