@@ -4,7 +4,7 @@ import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@
 import React from "react";
 
 const SideDashboard = () => (
-  <div className=" bg-inherit min-w-[250px] shrink z-10 max-w-[300px]">
+  <div className=" bg-inherit min-w-[250px] shrink z-10 max-w-[300px] top-0 sticky">
     <div className="text-white h-full mr-24 gap-4">
       <div className=" flex m-2 p-2 gap-4 mb-5 z-10 top-0">
         <Avatar
@@ -20,20 +20,20 @@ const SideDashboard = () => (
     <div className="p-2 bg-gray-900 rounded-md my-2 mx-2 flex justify-between">
         <div className="shadow-md">
           <h1 className="font-bold">IHSG </h1>
-          <span className="text-sm">6,655.17</span>
+          <span className="text-sm opacity-50">6,655.17</span>
         </div>
         <div className="shadow-md ">
-          <h1 className="font-bold text-cyan-600">+107,18</h1>
+          <h1 className="font-bold text-sm text-cyan-600">+107,18</h1>
           <span className="text-sm font-semibold text-cyan-700">(+5,67%)</span>
         </div>
     </div>
     <div className="p-2 bg-gray-900 rounded-md my-2 mx-2 flex justify-between">
         <div>
           <h1 className="font-bold">S&P 500</h1>
-          <span className="text-sm">4,410.33</span>
+          <span className="text-sm opacity-50">4,410.33</span>
         </div>
         <div>
-          <h1 className="font-bold text-red-700">-222,11</h1>
+          <h1 className="font-bold text-red-700 text-sm">-222,11</h1>
           <span className="text-sm font-semibold text-red-900">(-4,79%)</span>
         </div>
     </div>
