@@ -62,8 +62,8 @@ export default function SignupPage() {
       }}
       className="min-h-screen flex justify-center items-center text-inherit"
     >
-      <div className="flex flex-col items-center gap-4 border h-fit p-8 px-12 bg-slate-400 opacity-90 rounded-lg">
-        <h1 className="">{loading ? "Processing" : "Signup"}</h1>
+      <div className="flex flex-col items-center gap-4 border h-fit p-4 min-w-[370px] bg-slate-500 opacity-90 rounded-xl">
+        <h1 className="font-bold text-xl">{loading ? "Processing" : "Signup"}</h1>
         <hr />
         <Input
           type="username"
