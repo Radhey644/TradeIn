@@ -3,13 +3,11 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
-import { useToast } from "@chakra-ui/react";
 
 
 
 
 export default function SignupPage() {
-    const toast = useToast()
     const router = useRouter();
     const [user, setUser] = React.useState({
         email: "",
@@ -24,26 +22,10 @@ export default function SignupPage() {
             setLoading(true);
             const response = await axios.post("/api/users/signup", user);
             console.log("Signup success", response.data);
-            toast({
-                title: "Sucessfully Signed In",
-                status: 'success',
-                position:'top',
-                duration: 3000,
-                isClosable: true,
-              })
             router.push("/login");
             
         } catch (error:any) {
-            console.log("Signup failed", error);
-            toast({
-                title: error.response.data.error,
-                status: 'error',
-                position:'top',
-                duration: 3000,
-                isClosable: true,
-              })
-            
-            
+            console.log("Signup failed", error);  
         }finally {
             setLoading(false);
         }

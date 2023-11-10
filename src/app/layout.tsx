@@ -1,11 +1,6 @@
-import Navbar from "@/components/Navbar";
 import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Chakra from "@/components/Chakra";
-import Home from "@/components/Home";
+import type { Metadata } from "next"; 
 import NextuiProvider from "@/components/NextUIProvider";
-import TradeInNavbar from "@/components/Navbar";
 
 
 
@@ -23,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="eng">
-      <body className="">
+      <body className="max-w-[2200px]">
        <NextuiProvider>
         {children}
        </NextuiProvider>
