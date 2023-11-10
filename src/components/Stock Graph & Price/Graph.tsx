@@ -1,5 +1,4 @@
 "use client";
-import { VStack } from "@chakra-ui/react";
 import React, { PureComponent } from "react";
 import {
   LineChart,
@@ -57,7 +56,7 @@ const data = [
 
 const Graph = () => {
   return (
-    <VStack className="flex-1 w-4/5 m-2">
+    <div className="flex-1 w-4/5 m-2">
       <LineChart
         width={500}
         height={350}
@@ -74,7 +73,7 @@ const Graph = () => {
         <Legend />
         <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
       </LineChart>
-    </VStack>
+    </div>
   );
 };
 

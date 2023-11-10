@@ -1,69 +1,44 @@
-"use client"
+"use client";
 import { Link } from "@chakra-ui/next-js";
-import { Box, Divider, Heading, VStack, Text, Flex, Spacer } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Heading,
+  VStack,
+  Text,
+  Flex,
+  Spacer,
+} from "@chakra-ui/react";
+import { Avatar } from "@nextui-org/react";
 import React from "react";
 
 const SideDashboard = () => (
-  <div className="overflow-x-hidden bg-slate-900 ">
-    <VStack className="text-white h-full mr-24" gap={2} pt={4}>
-      <div className="order-3 flex m-2 p-2 gap-4 mb-5">
-        <img
-          className="rounded-full w-7"
+  <div className=" bg-inherit min-w-[250px] shrink z-10 ">
+    <div className="text-white h-full mr-24 gap-4">
+      <div className=" flex m-2 p-2 gap-4 mb-5 z-10 top-0">
+        <Avatar
           src="https://i.pinimg.com/originals/1e/c4/62/1ec4624b6606c8c358e41c85ccdd20a9.jpg"
-          alt=""
+          size="md"
         />
-        <Heading fontSize={"2xl"} className="font">
-          TradeIn
-        </Heading>
+        <h1 className="font-semibold self-center">Hello Atul</h1>
       </div>
-    </VStack>
+    </div>
     <span className="text-white opacity-70 text-xs lg:ml-4 ">INDEX LIST </span>
     <span className="text-white float-right mr-4">+</span>
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <Box
-        w="230px"
-        h="50px"
-        bg="rgba(33, 40, 60, 1)"
-        padding={2}
-        borderRadius={7}
-        display="flex"
-        alignItems="center"
-        mt="1.4rem"
-      >
-        <div>
-          <Text fontSize="12px" fontWeight="bold" textColor={"white"}>
-            IHSG
-          </Text>
-          <Text fontSize="10px" opacity="0.7" textColor={"white"}>
-            6,655.17
-          </Text>
+    <div className="p-2 bg-gray-900 rounded-md my-2 mx-2">
+        <div className="shadow-md ">
+          <h1>IHSG</h1>
+          <span>6,655.17</span>
         </div>
-      </Box>
     </div>
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <Box
-        w="230px"
-        h="50px"
-        bg="rgba(33, 40, 60, 1)"
-        borderRadius={7}
-        padding={2}
-        display="flex"
-        alignItems="center"
-        mt="1.1rem"
-        mb="1.8rem"
-      >
+    <div className="p-2 bg-gray-900 rounded-md my-2 mx-2">
         <div>
-          <Text fontSize="12px" fontWeight="bold" textColor={"white"}>
-            S&P 500
-          </Text>
-          <Text fontSize="10px" opacity="0.7" textColor={"white"}>
-            4,410.33
-          </Text>
+          <h1>S&P 500</h1>
+          <h1>4,410.33</h1>
         </div>
-      </Box>
     </div>
     <span className="text-white opacity-70 text-xs lg:ml-4 ">GENERAL </span>
-    <Flex alignItems="center" className="order-3 flex m-2 p-2 gap-2">
+    <div className="order-3 flex m-2 p-2 gap-2 items-center">
       <span
         className="fa-solid fa-house"
         style={{
@@ -80,9 +55,8 @@ const SideDashboard = () => (
         style={{ opacity: 0.7 }}
       >
         <Link href={"/test"}> Home</Link>
-        
       </Text>
-    </Flex>
+    </div>
     <Flex alignItems="center" className="order-3 flex m-2 p-2 gap-2">
       <span
         className="fa-solid fa-file-zipper"
@@ -103,26 +77,26 @@ const SideDashboard = () => (
       </Text>
     </Flex>
     <Flex alignItems="center" className="order-3 flex m-2 p-2 gap-2">
-  <span
-    className="fa-solid fa-money-bill-trend-up"
-    style={{
-      fontSize: "15px",
-      color: "#ffffff",
-      opacity: 0.7,
-      marginRight: "5px",
-    }}
-  ></span>
-  <Text
-    textColor="white"
-    fontSize="15px"
-    className="font cursor-pointer"
-    style={{ opacity: 0.7 }}
-  >
-    Stocks & Funds
-  </Text>
-  <Spacer />
-  <span className="text-white cursor-pointer fa-solid fa-chevron-down "></span>
-</Flex>
+      <span
+        className="fa-solid fa-money-bill-trend-up"
+        style={{
+          fontSize: "15px",
+          color: "#ffffff",
+          opacity: 0.7,
+          marginRight: "5px",
+        }}
+      ></span>
+      <Text
+        textColor="white"
+        fontSize="15px"
+        className="font cursor-pointer"
+        style={{ opacity: 0.7 }}
+      >
+        Stocks & Funds
+      </Text>
+      <Spacer />
+      <span className="text-white cursor-pointer fa-solid fa-chevron-down "></span>
+    </Flex>
 
     <Flex alignItems="center" className="order-3 flex m-2 p-2 gap-2">
       <span
@@ -141,10 +115,9 @@ const SideDashboard = () => (
         style={{ opacity: 0.7 }}
       >
         Transaction
-        
       </Text>
       <Spacer />
-          <span className="text-white cursor-pointer fa-solid fa-chevron-down "></span>
+      <span className="text-white cursor-pointer fa-solid fa-chevron-down "></span>
     </Flex>
     <Flex alignItems="center" className="order-3 flex m-2 p-2 gap-2">
       <span
@@ -184,7 +157,13 @@ const SideDashboard = () => (
         Community
       </Text>
     </Flex>
-    <span className="text-white opacity-70 text-xs lg:ml-4 mt-10" style={{ marginBottom: "3rem" }}> ABOUT </span>
+    <span
+      className="text-white opacity-70 text-xs lg:ml-4 mt-10"
+      style={{ marginBottom: "3rem" }}
+    >
+      {" "}
+      ABOUT{" "}
+    </span>
     <Flex alignItems="center" className="order-3 flex m-2 p-2 gap-2">
       <span
         className="fa-solid fa-handshake-angle"
@@ -202,7 +181,6 @@ const SideDashboard = () => (
         style={{ opacity: 0.7 }}
       >
         <Link href={"/test"}> Help & Services</Link>
-        
       </Text>
     </Flex>
     <Flex alignItems="center" className="order-3 flex m-2 p-2 gap-2">
@@ -222,7 +200,6 @@ const SideDashboard = () => (
         style={{ opacity: 0.7 }}
       >
         <Link href={"/test"}> FAQ</Link>
-        
       </Text>
     </Flex>
   </div>

@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Chakra from "@/components/Chakra";
 import Home from "@/components/Home";
+import NextuiProvider from "@/components/NextUIProvider";
+import TradeInNavbar from "@/components/Navbar";
 
 
 
@@ -20,11 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <Chakra>
+    <html lang="eng">
+      <body className="">
+       <NextuiProvider>
         {children}
-        </Chakra>
+       </NextuiProvider>
       </body>
     </html>
   );

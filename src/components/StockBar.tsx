@@ -1,16 +1,15 @@
 "use client";
-import { Heading, Spacer, VStack } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 const StockBar = () => {
   const [watchlist, setWatchlist] = useState(false);
   return (
     <div className="flex-row  p-3 text-white gap-4 flex-1">
-      <VStack className="float-left">
-        <div className="flex relative right-14">
-        <Heading color={"white"} fontSize={"xl"} className="-left-12 ">
+      <div className="float-left">
+        <div className="flex relative">
+        <h1 className="font-semibold">
           BBCA
-        </Heading>
+        </h1>
         </div>
         <span className="text-white opacity-70 text-xs">
           IDX{" "}
@@ -23,7 +22,7 @@ const StockBar = () => {
           </span>{" "}
           Bank Central Asia Tbk
         </span>
-      </VStack>
+      </div>
 
       {/* this will be a group of buttons to sell and buy stocks */}
       <div className="flex flex-row-reverse gap-2 flex-1 p-2 items-center space-x-2">

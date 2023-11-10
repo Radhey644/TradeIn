@@ -21,9 +21,9 @@ export const sendEmail = async({email, emailType, userId}:any) => {
             auth: {
               type: 'OAuth2',
               user: 'rahulisop135@gmail.com', // Your Gmail email address
-              clientId: '934827094292-lme7f8a93ur4s0loo8p5jivosc59to8c.apps.googleusercontent.com', // Your OAuth2 client ID
-              clientSecret: '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', // Your OAuth2 client secret
-              refreshToken: '1//04VZYXEHR-OORCgYIARAAGAQSNwF-L9Ir2UW_j7QABJIlSBlsl55MwgeJ3M7gopQZecCJKJk_T_wkpMjU5PXlZWnBALo7t_UzsX8', // Your OAuth2 refresh token
+              clientId: process.env.NODE_MAILER_CLIENT_ID, // Your OAuth2 client ID
+              clientSecret: process.env.NODE_MAILER_CLIENT_SECRET, // Your OAuth2 client secret
+              refreshToken: process.env.NODE_MAILER_REFRESH_TOKEN, // Your OAuth2 refresh token
             },
           });
 

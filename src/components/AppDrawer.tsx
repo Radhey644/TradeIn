@@ -6,14 +6,14 @@ const AppDrawer = () => {
 
   return (
     <>
-      <i
+      {/* <i
         className="fa-solid fa-bars fa-lg relative -top-11 left-2"
         style={{ color: "white" }}
         onClick={() => {
           setOpen(!open)
         }}
-      ></i>
-      {<div className={`w-${open?"auto":0} duration-1000 ease-in-out`}>
+      ></i> */}
+      {<div className= "duration-1000 ease-in-out">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum magni
         laborum fugiat sed facere? Eos cumque officiis quaerat, vel nam
         praesentium sit quis architecto sed, tenetur deleniti eius modi animi in

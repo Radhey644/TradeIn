@@ -1,7 +1,7 @@
 "use client"
 import Home from "@/components/Home";
 import { debounce } from "@/helpers/debounce";
-import { Input, Spinner } from "@chakra-ui/react";
+import { Flex, Input, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Coin from "./coin";
@@ -47,10 +47,10 @@ const Test = () => {
   }
 
   return (
-    <div className="p-2 flex-col justify-center bg-black min-h-screen">
+    <div className="p-2 bg-black min-h-screen">
       <Input
       className="border-gray-600"
-        placeholder="large size"
+        placeholder="Search a Trade"
         size="lg"
         bg={"gray.900"}
         color={"white"}
@@ -59,13 +59,13 @@ const Test = () => {
           setQuery(e.target.value);
         }}
       />
-      <div className="flex-col">
+      <Flex flexDir={"column"} gap={4} px={8} py={8} wrap={"wrap"}>
          {data &&
         data.map((item) => {
-          return <Coin Coin={item}/>
+          return <Link href={`/test/${item.id}`}><Coin Coin={item}/></Link>
           
         })}
-      </div>
+      </Flex>
      
     </div>
   );
