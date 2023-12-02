@@ -1,9 +1,26 @@
 "use client";
 import React from "react";
 import axios from "axios";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenu, NavbarMenuItem, NavbarMenuToggle} from "@nextui-org/react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
+  Input,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@nextui-org/react";
 import router from "next/router";
 import { AcmeLogo } from "./AcmeLogo";
+import { SearchIcon } from "./SearchIcon";
+import { arrayBuffer } from "stream/consumers";
 const TradeInNavbar = () => {
   const logout = async () => {
     try {
@@ -15,7 +32,8 @@ const TradeInNavbar = () => {
     }
   };
 
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const numbers = ["1", "2", "3", "4", "5"];
   const menuItems = [
     "Profile",
     "Trades",
@@ -54,6 +72,31 @@ const TradeInNavbar = () => {
           </Link>
         </NavbarItem>
       </NavbarContent>
+      <NavbarContent as="div" className="items-center" justify="end">
+        <Dropdown>
+          <DropdownTrigger>
+            <Input
+              className="min-w-[5rem]"
+              classNames={{
+                base: "max-w-full sm:max-w-[10rem] h-10",
+                mainWrapper: "h-full",
+                input: "text-small",
+                inputWrapper:
+                  "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+              }}
+              placeholder="Search Stocks..."
+              size="sm"
+              startContent={<SearchIcon size={18} />}
+              type="search"
+            />
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Stocks..">{
+          numbers.map((item)=>{
+            return(<DropdownItem>{item}</DropdownItem>)
+          })
+          }</DropdownMenu>
+        </Dropdown>
+      </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
           <Button color="primary" variant="flat" onClick={logout}>
@@ -66,7 +109,11 @@ const TradeInNavbar = () => {
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
               color={
-                index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
+                index === 2
+                  ? "primary"
+                  : index === menuItems.length - 1
+                  ? "danger"
+                  : "foreground"
               }
               className="w-full"
               href="#"
