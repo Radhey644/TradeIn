@@ -12,6 +12,7 @@ export default function SignupPage() {
     email: "",
     password: "",
     username: "",
+    fullname: "",
   });
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -65,6 +66,13 @@ export default function SignupPage() {
       <div className="flex flex-col items-center gap-4 border h-fit p-4 min-w-[370px] bg-slate-500 opacity-90 rounded-xl">
         <h1 className="font-bold text-xl">{loading ? "Processing" : "Signup"}</h1>
         <hr />
+        <Input
+          type="fullname"
+          label="Full Name"
+          placeholder="Enter your full name"
+          value={user.fullname}
+          onChange={(e) => setUser({ ...user, fullname: e.target.value })}
+        />
         <Input
           type="username"
           label="Username"

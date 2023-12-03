@@ -3,7 +3,7 @@ import User from "@/models/userModel";
 import bcryptjs from "bcrypt"
 
 
-export const sendEmail = async({email, emailType, userId}:any) => {
+export const sendEmail = async({fullname,email, emailType, userId}:any) => {
     try {
         // create a hased token
         const hashedToken = await bcryptjs.hash(userId.toString(), 10)
@@ -33,7 +33,7 @@ export const sendEmail = async({email, emailType, userId}:any) => {
             to: email,
             subject: "Welcome to TradeIn",
             html: `
-            <p>Hello ${email},</p>
+            <p>Hello ${fullname},</p>
             <p>Welcome to TradeIn, your platform for practicing stock trading strategies!</p>
             <p>We're excited to have you on board. With TradeIn, you can trade virtual money and test your strategies risk-free.</p>
             <p>Feel free to explore our platform and get started with virtual trading today.</p>

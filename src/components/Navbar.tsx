@@ -21,6 +21,7 @@ import router from "next/router";
 import { AcmeLogo } from "./AcmeLogo";
 import { SearchIcon } from "./SearchIcon";
 import { arrayBuffer } from "stream/consumers";
+import SearchBar from "./SearchBar";
 const TradeInNavbar = () => {
   const logout = async () => {
     try {
@@ -57,13 +58,13 @@ const TradeInNavbar = () => {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
+          <Link color="foreground" href="/portfolio">
+            Portfolio
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
           <Link href="#" aria-current="page">
-            Customers
+            Market News
           </Link>
         </NavbarItem>
         <NavbarItem>
@@ -73,29 +74,9 @@ const TradeInNavbar = () => {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent as="div" className="items-center" justify="end">
-        <Dropdown>
-          <DropdownTrigger>
-            <Input
-              className="min-w-[5rem]"
-              classNames={{
-                base: "max-w-full sm:max-w-[10rem] h-10",
-                mainWrapper: "h-full",
-                input: "text-small",
-                inputWrapper:
-                  "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-              }}
-              placeholder="Search Stocks..."
-              size="sm"
-              startContent={<SearchIcon size={18} />}
-              type="search"
-            />
-          </DropdownTrigger>
-          <DropdownMenu aria-label="Stocks..">{
-          numbers.map((item)=>{
-            return(<DropdownItem>{item}</DropdownItem>)
-          })
-          }</DropdownMenu>
-        </Dropdown>
+         <NavbarItem>
+        <SearchBar/>
+      </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
