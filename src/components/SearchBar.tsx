@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Input, Kbd, Listbox, ListboxItem } from "@nextui-org/react";
+import { Input, Kbd, Listbox, ListboxItem, Spinner } from "@nextui-org/react";
 import {
   Modal,
   ModalContent,
@@ -21,9 +21,11 @@ export default function SearchBar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
+  const [loading, setIsloading] = useState(true);
 
   // Create a debounced version of the function that makes API requests
   const debouncedFetchData = debounce((searchQuery) => {
+    setIsloading(true);
     fetch(`https://api.coingecko.com/api/v3/search?query=${searchQuery}`, {
       method: "GET",
     })
@@ -31,12 +33,14 @@ export default function SearchBar() {
       .then((responseData) => {
         console.log(responseData);
         setData(responseData.coins);
+        setIsloading(false);
       })
       .catch((err) => {
         console.log("Error occurred:", err);
       });
   }, 2000); // Adjust the debounce delay (1 second in this case)
   const debouncedFetchTrendingData = () => {
+    setIsloading(true);
     fetch(`https://api.coingecko.com/api/v3/search/trending`, {
       method: "GET",
     })
@@ -44,18 +48,18 @@ export default function SearchBar() {
       .then((responseData) => {
         console.log(responseData);
         setData(responseData.coins);
+        setIsloading(false);
       })
       .catch((err) => {
         console.log("Error occurred:", err);
       });
-  } // Adjust the debounce delay (1 second in this case)
+  }; // Adjust the debounce delay (1 second in this case)
 
   // Effect to watch for changes in the 'query' state
   useEffect(() => {
-    if (query.length ==0) {
-      debouncedFetchTrendingData()
-    }
-    else{
+    if (query.length == 0) {
+      debouncedFetchTrendingData();
+    } else {
       debouncedFetchData(query);
     }
   }, [query]);
@@ -71,6 +75,7 @@ export default function SearchBar() {
         onOpenChange={onOpenChange}
         placement="top-center"
         size="2xl"
+        className="min-h-[500px] bg-gray-900 p-1"
       >
         <ModalContent>
           {(onClose) => (
@@ -93,15 +98,19 @@ export default function SearchBar() {
               </ModalHeader>
               <ModalBody>
                 <div className="flex flex-col gap-3">
-                  {
-                    data.map((item,i)=>{
-                      if(i<8)
-                      {
-                         return (<StockCard stock={item}/>)
+                  {loading ? (
+                    <Spinner
+                      label="Fteching coins..."
+                      color="default"
+                      className="relative top-[5rem]"
+                    />
+                  ) : (
+                    data.map((item, i) => {
+                      if (i < 8) {
+                        return <StockCard stock={item} />;
                       }
-                   
                     })
-                  }
+                  )}
                 </div>
               </ModalBody>
             </>

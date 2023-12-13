@@ -3,7 +3,7 @@ import React from "react";
 
 const StockCard = ({ stock }: object) => {
   return (
-    <Button className="hover:bg-primary-400" size="lg">
+    <Button className="hover:bg-primary-400 bg-gray-700 bg-opacity-40" size="lg">
       <div className="flex gap-2 items-center flex-1">
         <span className="inline-block">
           <img
@@ -12,7 +12,8 @@ const StockCard = ({ stock }: object) => {
             className="h-10 w-10 rounded-full"
           />
         </span>
-        <span className="text-2xl">{stock.name}</span>
+        <span className="text-xl">{stock.name} ({stock.symbol})</span>
+        <span className="ml-3 opacity-60">Market rank : {stock.market_cap_rank}</span>
       </div>
     </Button>
   );
