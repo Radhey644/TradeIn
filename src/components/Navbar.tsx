@@ -34,7 +34,6 @@ const TradeInNavbar = () => {
   };
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const numbers = ["1", "2", "3", "4", "5"];
   const menuItems = [
     "Profile",
     "Trades",
@@ -50,13 +49,15 @@ const TradeInNavbar = () => {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
+        <Link href="/" color="foreground">
         <NavbarBrand>
           <AcmeLogo />
           <p className="font-bold text-inherit">TradeIn</p>
         </NavbarBrand>
+        </Link>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-6" justify="center">
         <NavbarItem>
           <Link color="foreground" href="/portfolio">
             Portfolio
@@ -75,6 +76,7 @@ const TradeInNavbar = () => {
       </NavbarContent>
       <NavbarContent as="div" className="items-center" justify="end">
          <NavbarItem>
+          {/* Search bar added */}
         <SearchBar/>
       </NavbarItem>
       </NavbarContent>
@@ -97,7 +99,6 @@ const TradeInNavbar = () => {
                   : "foreground"
               }
               className="w-full"
-              href="#"
               size="lg"
             >
               {item}

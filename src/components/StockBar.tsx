@@ -22,9 +22,15 @@ const StockBar = () => {
           Bank Central Asia Tbk
         </span>
       </div>
-
       {/* this will be a group of buttons to sell and buy stocks */}
-      <div className="flex flex-row-reverse gap-2 flex-1 p-2 items-center space-x-2">
+      <div className="flex gap-2 flex-1 p-2 items-center space-x-2 justify-end">
+        
+        <Button className="bg-green-300 px-4 rounded-md text-black font-bold text-sm">
+          Buy
+        </Button>
+        <Button className="bg-red-400 px-4 rounded-md text-black font-bold text-sm">
+          Sell
+        </Button>
         <Button
           disableRipple
           className={`${
@@ -35,12 +41,6 @@ const StockBar = () => {
           }}
         >
           {watchlist ? "Added to Watchlist" : "Add to Watchlist"}
-        </Button>
-        <Button className="bg-red-400 px-4 rounded-md text-black font-bold text-sm">
-          Sell
-        </Button>
-        <Button className="bg-green-300 px-4 rounded-md text-black font-bold text-sm">
-          Buy
         </Button>
       </div>
     </div>

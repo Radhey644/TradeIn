@@ -22,7 +22,7 @@ return(
           size="md"
           isBordered
         />
-        <h1 className="font-semibold self-center">Lullam</h1>
+        <h1 className="font-semibold self-center">Atul</h1>
       </div>
     </div>
     <span className="text-white opacity-70 text-xs lg:ml-4 ">INDEX LIST </span>

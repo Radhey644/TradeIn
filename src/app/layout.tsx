@@ -4,6 +4,7 @@ import NextuiProvider from "@/components/NextUIProvider";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "@/components/Footer";
+import TradeInNavbar from "@/components/Navbar";
 
 
 // const inter = Inter({ subsets: ["latin"] });

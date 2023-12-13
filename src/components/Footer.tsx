@@ -6,7 +6,7 @@ import { Link } from "@nextui-org/react";
 const Footer = () => {
   return (
       <footer className="bg-white shadow dark:bg-gray-900">
-        <div className="w-full max-w-screen-xl md:py-8 p-1">
+        <div className="w-full max-w-screen-xl md:py-8 p-1 justify-center">
           <div className="sm:flex sm:items-center sm:justify-between">
             <a
               onClick={() => {

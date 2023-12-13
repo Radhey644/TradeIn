@@ -16,7 +16,7 @@ const Home = () => {
 
       {/* this is the right part of homepage */}
       <div className="flex-col flex-1">
-        <TradeInNavbar />
+        
         <StockBar />
         {/* this part is for graph and the prices */}
         <div className="flex gap-2 xs:flex-col flex-wrap">

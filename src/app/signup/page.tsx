@@ -4,8 +4,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { url } from "inspector";
-import { Button, Input, Link } from "@nextui-org/react";
-
+import { Button, Divider, Input, Link } from "@nextui-org/react";
 export default function SignupPage() {
   const router = useRouter();
   const [user, setUser] = React.useState({
@@ -58,15 +57,16 @@ export default function SignupPage() {
     <div
       style={{
         backgroundImage:
-          "url('https://images.pexels.com/photos/8370377/pexels-photo-8370377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2 ')",
+          "url('https://img.freepik.com/premium-vector/stock-market-graph-background_565702-77.jpg?w=1060')",
         backgroundSize: "cover",
       }}
       className="min-h-screen flex justify-center items-center text-inherit"
     >
-      <div className="flex flex-col items-center gap-4 border h-fit p-4 min-w-[370px] bg-slate-500 opacity-90 rounded-xl">
+      <div className="flex flex-col items-center gap-4 border h-fit p-4 min-w-[400px] bg-slate-500 bg-opacity-50 rounded-xl">
         <h1 className="font-bold text-xl">{loading ? "Processing" : "Signup"}</h1>
-        <hr />
+        <Divider />
         <Input
+          variant="underlined"
           type="fullname"
           label="Full Name"
           placeholder="Enter your full name"
@@ -75,12 +75,14 @@ export default function SignupPage() {
         />
         <Input
           type="username"
+          variant="underlined"
           label="Username"
           placeholder="Enter your username"
           value={user.username}
           onChange={(e) => setUser({ ...user, username: e.target.value })}
         />
         <Input
+        variant="underlined"
           type="email"
           label="Email"
           placeholder="Enter your email"
@@ -88,6 +90,7 @@ export default function SignupPage() {
           onChange={(e) => setUser({ ...user, email: e.target.value })}
         />
         <Input
+          variant="underlined"
           type="password"
           label="Password"
           placeholder="Enter your password"
@@ -95,13 +98,15 @@ export default function SignupPage() {
           onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
         <Button
+        size="lg"
         color="primary"
+        variant="shadow"
           onClick={onSignup}
-          className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+          className="rounded-lg mb-4"
         >
           {buttonDisabled ? "No signup" : "Signup"}
         </Button>
-        <Link showAnchorIcon href="/login">Visit login page</Link>
+        <Link showAnchorIcon color="success" href="/login">Visit login page</Link>
       </div>
     </div>
   );
