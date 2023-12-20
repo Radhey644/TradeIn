@@ -1,10 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next"; 
-import NextuiProvider from "@/components/NextUIProvider";
+import NextuiProvider from "@/components/Providers/NextUIProvider";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from "@/components/Footer";
-import TradeInNavbar from "@/components/Navbar";
+import Footer from "@/components/Footer/Footer";
+import TradeInNavbar from "@/components/Navbar/Navbar";
 
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -24,7 +24,6 @@ export default function RootLayout({
       <body className="max-w-[2200px]">
        <NextuiProvider>
         {children}
-        <Footer/>
         <ToastContainer theme="dark"/>
        </NextuiProvider>
       </body>

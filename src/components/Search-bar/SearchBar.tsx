@@ -13,18 +13,19 @@ import {
   Link,
 } from "@nextui-org/react";
 import { SearchIcon } from "./SearchIcon";
-import { ListboxWrapper } from "./ListboxWrapper";
-import StockCard from "./Search-bar/StockCard";
+import { ListboxWrapper } from "../SideDashboard/ListboxWrapper";
+import StockCard from "./StockCard";
 import { debounce } from "@/helpers/debounce";
 
 export default function SearchBar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [data, setData] = useState([]);
+  const [price,setPrice]= useState([]);
   const [query, setQuery] = useState("");
   const [loading, setIsloading] = useState(true);
 
   // Create a debounced version of the function that makes API requests
-  const debouncedFetchData = debounce((searchQuery) => {
+  const debouncedFetchData = debounce((searchQuery: string) => {
     setIsloading(true);
     fetch(`https://api.coingecko.com/api/v3/search?query=${searchQuery}`, {
       method: "GET",
@@ -38,7 +39,7 @@ export default function SearchBar() {
       .catch((err) => {
         console.log("Error occurred:", err);
       });
-  }, 2000); // Adjust the debounce delay (1 second in this case)
+  }, 3000); // Adjust the debounce delay (1 second in this case)
   const debouncedFetchTrendingData = () => {
     setIsloading(true);
     fetch(`https://api.coingecko.com/api/v3/search/trending`, {
@@ -105,9 +106,11 @@ export default function SearchBar() {
                       className="relative top-[5rem]"
                     />
                   ) : (
-                    data.map((item, i) => {
+                    data.map((coin, i) => {
                       if (i < 8) {
-                        return <StockCard stock={item} />;
+                        return (
+                            <StockCard stock={coin} />
+                        );
                       }
                     })
                   )}

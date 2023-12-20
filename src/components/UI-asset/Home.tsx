@@ -1,9 +1,9 @@
 import React from "react";
-import SideDashboard from "./SideDashboard";
+import SideDashboard from "../SideDashboard/SideDashboard";
 import StockBar from "./StockBar";
-import Graph from "./Stock Graph & Price/Graph";
-import Price from "./Stock Graph & Price/Price";
-import TradeInNavbar from "./Navbar";
+import Graph from "../Stock Graph & Price/Graph";
+import Price from "../Stock Graph & Price/Price";
+import TradeInNavbar from "../Navbar/Navbar";
 
 const Home = () => {
   return (

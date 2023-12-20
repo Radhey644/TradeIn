@@ -19,9 +19,9 @@ import {
 } from "@nextui-org/react";
 import router from "next/router";
 import { AcmeLogo } from "./AcmeLogo";
-import { SearchIcon } from "./SearchIcon";
+import { SearchIcon } from "../Search-bar/SearchIcon";
 import { arrayBuffer } from "stream/consumers";
-import SearchBar from "./SearchBar";
+import SearchBar from "../Search-bar/SearchBar";
 const TradeInNavbar = () => {
   const logout = async () => {
     try {

@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
-import { AcmeLogo } from "./AcmeLogo";
+import { AcmeLogo } from "../Navbar/AcmeLogo";
 import { Link } from "@nextui-org/react";
 
 const Footer = () => {
   return (
       <footer className="bg-white shadow dark:bg-gray-900">
-        <div className="w-full max-w-screen-xl md:py-8 p-1 justify-center">
+        <div className="w-full max-w-screen md:py-8 p-2 justify-center">
           <div className="sm:flex sm:items-center sm:justify-between">
             <a
               onClick={() => {
@@ -29,7 +29,7 @@ const Footer = () => {
             </a>
             <ul className="flex flex-wrap items-center mb-6 text-md font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
               <li>
-                <Link href="#" className="hover:underline me-4 md:me-6">
+                <Link href="/about" className="hover:underline me-4 md:me-6">
                   About
                 </Link>
               </li>

@@ -1,5 +1,6 @@
 "use client";
-import TradeInNavbar from "@/components/Navbar";
+import Footer from "@/components/Footer/Footer";
+import TradeInNavbar from "@/components/Navbar/Navbar";
 import { Button, Input, Textarea } from "@nextui-org/react";
 import React from "react";
 
@@ -103,6 +104,7 @@ const page = () => {
         </div>
       </div>
       </div>
+      <Footer/>
     </>
   );
 };
