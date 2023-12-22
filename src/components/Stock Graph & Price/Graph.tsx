@@ -33,7 +33,7 @@ const Graph = ({data}:Array<Object>) => {
       </LineChart> */}
       <AreaChart
       width={800}
-      height={500}
+      height={450}
       data={data}
       margin={{
         top: 10,

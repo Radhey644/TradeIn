@@ -2,7 +2,13 @@
 import Footer from "@/components/Footer/Footer";
 import TradeInNavbar from "@/components/Navbar/Navbar";
 import Graph from "@/components/Stock Graph & Price/Graph";
-import { Divider, Select, SelectItem, Spacer, Spinner } from "@nextui-org/react";
+import {
+  Divider,
+  Select,
+  SelectItem,
+  Spacer,
+  Spinner,
+} from "@nextui-org/react";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -10,8 +16,8 @@ const Symbol = () => {
   const { symbol } = useParams();
   console.log(symbol);
   const [coinData, setCoinData] = useState(null);
-  const [Coin_graph_data , setCoin_graph_data] = useState([]);
-  const [Graph_Interval , setGraph_Interval] = useState(120)
+  const [Coin_graph_data, setCoin_graph_data] = useState([]);
+  const [Graph_Interval, setGraph_Interval] = useState(120);
   const coinName = coinData?.name;
   const coinDescription = coinData?.description.en;
   const coinImage = coinData?.image.large;
@@ -21,18 +27,20 @@ const Symbol = () => {
   // Fetching market data for the specific crypto currency
   useEffect(() => {
     const fetchData = async () => {
-      const market_data = await fetch(`https://api.coingecko.com/api/v3/coins/${symbol}/market_chart?vs_currency=usd&days=${Graph_Interval}`)
-      const market_res = await market_data.json()
-      console.log(market_res.prices)
+      const market_data = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${symbol}/market_chart?vs_currency=usd&days=${Graph_Interval}`
+      );
+      const market_res = await market_data.json();
+      console.log(market_res.prices);
       const graphData = market_res.prices.map((price: [any, any]) => {
         const [timestamp, p] = price;
-        const date= new Date(timestamp).toLocaleDateString("en-us")
+        const date = new Date(timestamp).toLocaleDateString("en-us");
         return {
           Date: date,
           Price: p,
         };
       });
-      setCoin_graph_data(graphData)
+      setCoin_graph_data(graphData);
     };
     fetchData();
   }, [Graph_Interval]);
@@ -40,7 +48,7 @@ const Symbol = () => {
   // Fetching the normal data for the symbol
   useEffect(() => {
     const fetchData = async () => {
-       const result = await fetch(
+      const result = await fetch(
         `https://api.coingecko.com/api/v3/coins/${symbol}?localization=false`
       );
       const data = await result.json();
@@ -69,37 +77,39 @@ const Symbol = () => {
               </div>
 
               <Select
-              labelPlacement={"outside-left"}
-              label="Time Interval"
-              className="max-w-xs font-bold text-md"
-              value={Graph_Interval}
-              onChange={(e)=>{setGraph_Interval(Number(e.target.value))}}
-            >
+                labelPlacement={"outside-left"}
+                label="Time Interval"
+                className="max-w-xs font-bold text-md"
+                value={Graph_Interval}
+                onChange={(e) => {
+                  setGraph_Interval(Number(e.target.value));
+                }}
+              >
                 <SelectItem key={1} value={1}>
-                 1 day
+                  1 day
                 </SelectItem>
                 <SelectItem key={5} value={5}>
-                 5 days
+                  5 days
                 </SelectItem>
                 <SelectItem key={15} value={15}>
-                 15 days
+                  15 days
                 </SelectItem>
                 <SelectItem key={30} value={30}>
-                 30 days
+                  30 days
                 </SelectItem>
                 <SelectItem key={60} value={60}>
-                 60 days
+                  60 days
                 </SelectItem>
                 <SelectItem key={90} value={90}>
-                 90 days
+                  90 days
                 </SelectItem>
                 <SelectItem key={120} value={120}>
-                 120 days
+                  120 days
                 </SelectItem>
-            </Select>
+              </Select>
 
               <div className="">
-              <span className="font-bold block text-2xl">${coinPrice}</span>
+                <span className="font-bold block text-2xl">${coinPrice}</span>
                 {Coin_price_change_24h > 0 ? (
                   <span className="bg-green-600 p-1 rounded-full">
                     <svg
@@ -133,18 +143,16 @@ const Symbol = () => {
                     {Coin_price_change_24h.toFixed(4)}
                   </span>
                 )}
-                
               </div>
             </div>
             <Divider />
-            <div className="mt-3 flex px-2">
+            <div className="mt-3 flex px-2 gap-3 items-center">
               <div className="flex-shrink">
-              
-                <Graph data={Coin_graph_data}/>
+                <Graph data={Coin_graph_data} />
               </div>
-             <div className="font-semibold text-2xl flex-1 m-auto">
-             {coinDescription}
-             </div>
+              <div className="font-semibold text-xl flex-1  overflow-hidden h-[450px]">
+                {coinDescription}...
+              </div>
             </div>
 
             {/* <h1>{coinPrice}</h1> */}
