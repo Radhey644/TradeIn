@@ -19,10 +19,10 @@ const Symbol = () => {
   const [Coin_graph_data, setCoin_graph_data] = useState([]);
   const [Graph_Interval, setGraph_Interval] = useState(120);
   const coinName = coinData?.name;
-  const coinDescription = coinData?.description.en;
-  const coinImage = coinData?.image.large;
-  const coinPrice = coinData?.market_data.current_price.usd;
-  const Coin_price_change_24h = Number(coinData?.market_data.price_change_24h);
+  const coinDescription = coinData?.description?.en;
+  const coinImage = coinData?.image?.large;
+  const coinPrice = coinData?.market_data?.current_price.usd;
+  const Coin_price_change_24h = Number(coinData?.market_data?.price_change_24h);
 
   // Fetching market data for the specific crypto currency
   useEffect(() => {

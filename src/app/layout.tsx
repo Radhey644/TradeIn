@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="eng">
-      <body className="max-w-[2200px]">
+      <body className="max-w-[2000px]">
        <NextuiProvider>
         {children}
         <ToastContainer theme="dark"/>
