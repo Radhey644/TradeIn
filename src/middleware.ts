@@ -23,8 +23,13 @@ export function middleware(request: NextRequest) {
 // See "Matching Paths" below to learn more
 export const config = {
   matcher: [
-    '/',
+    "/",
+    "/coin",
+    "/coin/:id*",
+    '/portfolio',
     '/profile',
+    '/about',
+    '/contact',
     '/login',
     '/signup',
     '/verifyemail'

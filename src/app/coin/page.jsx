@@ -1,5 +1,4 @@
 "use client"
-import Home from "@/components/Home";
 import { debounce } from "@/helpers/debounce";
 import { Flex, Input, Spinner } from "@chakra-ui/react";
 import Link from "next/link";

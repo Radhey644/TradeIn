@@ -11,6 +11,7 @@ import Trending_Marque from "@/components/Marquee-card/TrendingMarquee";
 
 export default function Page() {
   const [ trending , setTrending ] = useState([])
+  const [ UserData , setUserData] = useState()
   const coins = trending?.map((coin: any,i: number)=>{
       return ({
        id:coin.item.coin_id,
@@ -53,7 +54,23 @@ export default function Page() {
         console.log("Error occurred:", err);
       });
     }
+   
+    const fetchUser =() => {
+     fetch('http://localhost:3000/api/users/me',{
+        method:"GET",
+      })
+      .then(async (res)=>
+      {
+        console.log(res)
+        const result = await res.json()
+        console.log(result.data)
+        setUserData(result.data)
+      })
+      .catch(err=>console.log(err))
+    
+    }
     fetchData()
+    fetchUser()
   },[])
   return (
     <main>
@@ -67,7 +84,7 @@ export default function Page() {
       <div className="flex flex-row bg-black min-h-screen">
         {/* this is the left part of homepage */}
         <div className="shadow-lg border-r-2 border-slate-800 hidden sm:block shrink">
-          <SideDashboard />
+          <SideDashboard User={UserData} />
         </div>
 
         {/* this is the right part of homepage */}

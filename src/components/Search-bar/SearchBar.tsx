@@ -20,7 +20,7 @@ import { debounce } from "@/helpers/debounce";
 export default function SearchBar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [data, setData] = useState([]);
-  const [price,setPrice]= useState([]);
+  const [price, setPrice] = useState([]);
   const [query, setQuery] = useState("");
   const [loading, setIsloading] = useState(true);
 
@@ -39,7 +39,7 @@ export default function SearchBar() {
       .catch((err) => {
         console.log("Error occurred:", err);
       });
-  }, 3000); // Adjust the debounce delay (1 second in this case)
+  }, 2000); // Adjust the debounce delay (1 second in this case)
   const debouncedFetchTrendingData = () => {
     setIsloading(true);
     fetch(`https://api.coingecko.com/api/v3/search/trending`, {
@@ -58,12 +58,15 @@ export default function SearchBar() {
 
   // Effect to watch for changes in the 'query' state
   useEffect(() => {
-    if (query.length == 0) {
-      debouncedFetchTrendingData();
-    } else {
+    if (query.length > 0) {
       debouncedFetchData(query);
     }
   }, [query]);
+
+  useEffect(() => {
+    debouncedFetchTrendingData();
+  }, []);
+
   return (
     <>
       <Button onPress={onOpen} className="bg-opacity-50 ml-5">
@@ -94,7 +97,6 @@ export default function SearchBar() {
                       setQuery(e.target.value);
                     }}
                   ></Input>
-                  <Kbd keys={["escape"]}>ESC</Kbd>
                 </div>
               </ModalHeader>
               <ModalBody>
@@ -108,9 +110,7 @@ export default function SearchBar() {
                   ) : (
                     data.map((coin, i) => {
                       if (i < 8) {
-                        return (
-                            <StockCard stock={coin} />
-                        );
+                        return <StockCard stock={coin} />;
                       }
                     })
                   )}

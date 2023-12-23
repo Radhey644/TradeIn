@@ -79,6 +79,7 @@ const Symbol = () => {
               <Select
                 labelPlacement={"outside-left"}
                 label="Time Interval"
+                defaultSelectedKeys={["120"]}
                 className="max-w-xs font-bold text-md"
                 value={Graph_Interval}
                 onChange={(e) => {

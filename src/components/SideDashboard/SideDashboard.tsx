@@ -12,7 +12,7 @@ import {
   ListboxItem,
 } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
-const SideDashboard = () =>{
+const SideDashboard = ({User}:any) =>{
 return(
    <div className=" bg-inherit min-w-[250px] shrink z-10 max-w-[300px] top-0 sticky">
     <div className="text-white h-full mr-24 gap-4">
@@ -22,7 +22,7 @@ return(
           size="md"
           isBordered
         />
-        <h1 className="font-semibold self-center">Atul</h1>
+        <h1 className="font-semibold self-center">{User?.fullname}</h1>
       </div>
     </div>
     <span className="text-white opacity-70 text-xs lg:ml-4 ">INDEX LIST </span>

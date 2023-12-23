@@ -17,6 +17,14 @@ export default function SignupPage() {
   const [loading, setLoading] = React.useState(false);
 
   const onSignup = async () => {
+    if(user.email==""||user.fullname==""||user.password==""||user.username=="")
+    {
+      toast.error("Please fill the feilds !", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
+      return
+    }
     try {
       setLoading(true);
       toast.warn("Signing In !", {
@@ -111,3 +119,4 @@ export default function SignupPage() {
     </div>
   );
 }
+
