@@ -21,6 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="eng">
+      <head>
+        <link rel="shortcut icon" href="/logo.jpg" type="image/x-icon" />
+      </head>
       <body className="max-w-[2000px]">
        <NextuiProvider>
         {children}

@@ -56,7 +56,7 @@ export default function Page() {
     }
    
     const fetchUser =() => {
-     fetch('http://localhost:3000/api/users/me',{
+     fetch('/api/users/me',{
         method:"GET",
       })
       .then(async (res)=>

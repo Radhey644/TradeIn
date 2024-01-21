@@ -5,25 +5,62 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { url } from "inspector";
 import { Button, Divider, Input, Link } from "@nextui-org/react";
+export type User = {
+  username: string | undefined;
+  password: string | undefined;
+  email?: string | undefined;
+  fullname: string | undefined;
+  profile_picture?: File | null;
+};
 export default function SignupPage() {
   const router = useRouter();
+
   const [user, setUser] = React.useState({
     email: "",
     password: "",
     username: "",
     fullname: "",
+    profile_picture: null,
   });
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
+  const handleFileChange = (e: { target: { files: any[] } }) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        // Update the user state with the selected file
+        setUser({ ...user, profile_picture: event.target.result });
+
+        // Call your existing function to set the background image
+        setBodyBackground(event.target.result);
+      };
+
+      // Read the selected file as a data URL
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const setBodyBackground = (imageUrl: string | ArrayBuffer | null) => {
+    // Your existing function to set the background image
+    document.body.style.cssText = `background-image: url("${imageUrl}")`;
+  };
   const onSignup = async () => {
-    if(user.email==""||user.fullname==""||user.password==""||user.username=="")
-    {
+    console.log(user);
+    if (
+      user.email == "" ||
+      user.fullname == "" ||
+      user.password == "" ||
+      user.username == ""
+    ) {
       toast.error("Please fill the feilds !", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 1000,
       });
-      return
+      return;
     }
     try {
       setLoading(true);
@@ -64,14 +101,15 @@ export default function SignupPage() {
   return (
     <div
       style={{
-        backgroundImage:
-          "url('https://img.freepik.com/premium-vector/stock-market-graph-background_565702-77.jpg?w=1060')",
+        backgroundImage: "url('/signupBg.webp')",
         backgroundSize: "cover",
       }}
       className="min-h-screen flex justify-center items-center text-inherit"
     >
       <div className="flex flex-col items-center gap-4 border h-fit p-4 min-w-[400px] bg-slate-500 bg-opacity-50 rounded-xl">
-        <h1 className="font-bold text-xl">{loading ? "Processing" : "Signup"}</h1>
+        <h1 className="font-bold text-xl">
+          {loading ? "Processing" : "Signup"}
+        </h1>
         <Divider />
         <Input
           variant="underlined"
@@ -90,7 +128,17 @@ export default function SignupPage() {
           onChange={(e) => setUser({ ...user, username: e.target.value })}
         />
         <Input
-        variant="underlined"
+          type="file"
+          variant="underlined"
+          label="profile_picture"
+          placeholder="Add an image"
+          // onChange={(e) =>
+          //   setUser({ ...user, profile_picture: e.target.files[0] })
+          onChange={handleFileChange}
+        />
+
+        <Input
+          variant="underlined"
           type="email"
           label="Email"
           placeholder="Enter your email"
@@ -106,17 +154,18 @@ export default function SignupPage() {
           onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
         <Button
-        size="lg"
-        color="primary"
-        variant="shadow"
+          size="lg"
+          color="primary"
+          variant="shadow"
           onClick={onSignup}
           className="rounded-lg mb-4"
         >
           {buttonDisabled ? "No signup" : "Signup"}
         </Button>
-        <Link showAnchorIcon color="success" href="/login">Visit login page</Link>
+        <Link showAnchorIcon color="success" href="/login">
+          Visit login page
+        </Link>
       </div>
     </div>
   );
 }
-

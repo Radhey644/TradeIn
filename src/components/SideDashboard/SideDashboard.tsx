@@ -13,6 +13,7 @@ import {
 } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 const SideDashboard = ({User}:any) =>{
+  console.log(User)
 return(
    <div className=" bg-inherit min-w-[250px] shrink z-10 max-w-[300px] top-0 sticky">
     <div className="text-white h-full mr-24 gap-4">
