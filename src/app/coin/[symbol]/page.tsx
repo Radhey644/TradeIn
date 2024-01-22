@@ -40,6 +40,7 @@ const Symbol = () => {
           Price: p,
         };
       });
+      console.log(graphData)
       setCoin_graph_data(graphData);
     };
     fetchData();

@@ -12,7 +12,7 @@ import {
   AreaChart,
   Area,
 } from "recharts";
-const Graph = ({data}:Array<Object>) => {
+const Graph = ({ data }: Array<Object>) => {
   return (
     <>
       {/* <LineChart
@@ -31,28 +31,35 @@ const Graph = ({data}:Array<Object>) => {
         <Legend />
         <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
       </LineChart> */}
-      <AreaChart
-      width={800}
-      height={450}
-      data={data}
-      margin={{
-        top: 10,
-        right: 30,
-        left: 0,
-        bottom: 0
-      }}
-    >
-      <defs>
-    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="5%" stopColor="#33adff" stopOpacity={0.8}/>
-      <stop offset="95%" stopColor="#33adff" stopOpacity={0}/>
-    </linearGradient>
-  </defs>
-      <XAxis dataKey="Date" />
-      <YAxis />
-      <Tooltip />
-      <Area type="monotone" dataKey="Price"  stroke="#33adff" strokeWidth={3} fill="url(#colorUv)" fillOpacity={0.3} />
-    </AreaChart>
+        <AreaChart
+          width={800}
+          height={450}
+          data={data}
+          margin={{
+            top: 10,
+            right: 30,
+            left: 0,
+            bottom: 0,
+          }}
+        >
+          <defs>
+            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#33adff" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#33adff" stopOpacity={0} />
+            </linearGradient>
+          </defs>
+          <XAxis dataKey="Date" />
+          <YAxis />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="Price"
+            stroke="#33adff"
+            strokeWidth={2}
+            fill="url(#colorUv)"
+            fillOpacity={0.3}
+          />
+        </AreaChart>
     </>
   );
 };

@@ -1,11 +1,11 @@
 import "./globals.css";
-import type { Metadata } from "next"; 
+import type { Metadata } from "next";
 import NextuiProvider from "@/components/Providers/NextUIProvider";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-import Footer from "@/components/Footer/Footer";
-import TradeInNavbar from "@/components/Navbar/Navbar";
-
+import "react-toastify/dist/ReactToastify.css";
+// import Footer from "@/components/Footer/Footer";
+// import TradeInNavbar from "@/components/Navbar/Navbar";
+import Head from "next/head";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -21,14 +21,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="eng">
-      <head>
+      <Head>
         <link rel="shortcut icon" href="/logo.jpg" type="image/x-icon" />
-      </head>
-      <body className="max-w-[2000px]">
-       <NextuiProvider>
-        {children}
-        <ToastContainer theme="dark"/>
-       </NextuiProvider>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossOrigin="anonymous"
+        />
+      </Head>
+      <body className="max-w-[2000px] m-auto">
+        <NextuiProvider>
+          {children}
+          <ToastContainer theme="dark" />
+        </NextuiProvider>
       </body>
     </html>
   );

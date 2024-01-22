@@ -19,7 +19,7 @@ return(
     <div className="text-white h-full mr-20 gap-4">
       <div className=" flex m-2 px-2 gap-4 mb-5 z-10 top-0 w-full">
         <Avatar
-          src="https://i.pinimg.com/originals/1e/c4/62/1ec4624b6606c8c358e41c85ccdd20a9.jpg"
+          src={User?.avtar}
           size="md"
           isBordered
           className="rounded-full"

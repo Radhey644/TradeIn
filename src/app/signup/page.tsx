@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { CldUploadButton, CldUploadWidget } from "next-cloudinary";
 import { url } from "inspector";
 import { Button, Divider, Input, Link } from "@nextui-org/react";
 export type User = {
@@ -10,7 +11,7 @@ export type User = {
   password: string | undefined;
   email?: string | undefined;
   fullname: string | undefined;
-  profile_picture?: File | null;
+  avtar?: string | undefined;
 };
 export default function SignupPage() {
   const router = useRouter();
@@ -20,17 +21,17 @@ export default function SignupPage() {
     password: "",
     username: "",
     fullname: "",
-    profile_picture: null,
+    avtar: "",
   });
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const onSignup = async () => {
-    const formData = new FormData();
-    formData.append("fullname", user.fullname);
-    formData.append("username", user.username);
-    formData.append("avtar", user.profile_picture);
-    formData.append("email", user.email);
-    formData.append("password", user.password);
+    // const formData = new FormData();
+    // formData.append("fullname", user.fullname);
+    // formData.append("username", user.username);
+    // formData.append("avtar", user.profile_picture);
+    // formData.append("email", user.email);
+    // formData.append("password", user.password);
     console.log(user);
     if (
       user.email == "" ||
@@ -50,7 +51,7 @@ export default function SignupPage() {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 1000,
       });
-      const response = await axios.post("/api/users/signup", formData);
+      const response = await axios.post("/api/users/signup", user);
       console.log("Signup success", response.data);
       toast.success("Account Created", {
         position: toast.POSITION.TOP_CENTER,
@@ -110,14 +111,27 @@ export default function SignupPage() {
           value={user.username}
           onChange={(e) => setUser({ ...user, username: e.target.value })}
         />
-        <Input
+        {/* <Input
           type="file"
           variant="underlined"
           label="profile_picture"
           placeholder="Add an image"
           onChange={(e) =>
             setUser({ ...user, profile_picture: e.target.files[0] })}
-        />
+        /> */}
+
+        <CldUploadWidget
+        uploadPreset="tradein"
+        signatureEndpoint="/api/sign-image"
+        onUpload={(res)=>{
+          console.log(res)
+          setUser({...user,avtar:res.info.url})
+          
+        }}>
+          {({ open }) => {
+            return <button onClick={() => open()}>Upload an Image</button>;
+          }}
+        </CldUploadWidget>
 
         <Input
           variant="underlined"

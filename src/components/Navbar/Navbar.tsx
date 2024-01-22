@@ -43,17 +43,17 @@ const TradeInNavbar = () => {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="flex justify-between">
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
         <Link href="/" color="foreground">
-        <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit">TradeIn</p>
-        </NavbarBrand>
+          <NavbarBrand>
+            <AcmeLogo />
+            <p className="font-bold text-inherit">TradeIn</p>
+          </NavbarBrand>
         </Link>
       </NavbarContent>
 
@@ -75,12 +75,12 @@ const TradeInNavbar = () => {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent as="div" className="items-center" justify="end">
-         <NavbarItem>
+        <NavbarItem>
           {/* Search bar added */}
-        <SearchBar/>
-      </NavbarItem>
+          <SearchBar/>
+        </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end">
+      <NavbarContent className="ml-auto" justify="end">
         <NavbarItem>
           <Button color="primary" variant="flat" onClick={logout}>
             Logout

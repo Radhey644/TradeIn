@@ -7,31 +7,14 @@ import { sendEmail } from "@/helpers/mailer";
 connect();
 
 export async function POST(request: NextRequest) {
-  function formDataToObject(formData: any) {
-    const object = {};
-    formData.forEach((value: any, key: any) => {
-      object[key] = value;
-    });
-    console.log(object);
-    return object;
-  }
   try {
-    console.log(request);
-    const reqs = await request.formData();
-    // formDataToObject(reqs)
-    // console.log(reqs);
-    // const reqBody = await request.json();
-    const data = formDataToObject(reqs);
-    const {
-      fullname,
-      username,
-      email,
-      password,
-      avtar,
-    } =
-      data;
+    const data = await request.json(); // Assuming request is a valid fetch request
+    console.log(data); // Log the entire JSON data for inspection
 
-    console.log(avtar);
+    // Destructure properties from the JSON data
+    const { fullname, username, email, password, avtar } = data;
+
+    console.log(avtar); // Log the value of avtar
     console.log(fullname);
 
     //check if user already exists
@@ -52,6 +35,7 @@ export async function POST(request: NextRequest) {
       fullname,
       username,
       email,
+      avtar,
       password: hashedPassword,
     });
 
