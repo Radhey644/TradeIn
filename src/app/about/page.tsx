@@ -13,7 +13,7 @@ const page = () => {
       {/* First div with background */}
       <div className="min-h-screen">
         <div
-          style={{ backgroundImage: 'url("/background1.jpg")' }}
+          style={{ backgroundImage: 'url("/about.avif")' }}
           className="bg-cover bg-center min-h bg-opacity-60 flex justify-center my-5"
         >
           {/* Content of the first div */}
