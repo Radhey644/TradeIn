@@ -24,31 +24,13 @@ export default function SignupPage() {
   });
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-
-  const handleFileChange = (e: { target: { files: any[] } }) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = (event) => {
-        // Update the user state with the selected file
-        setUser({ ...user, profile_picture: event.target.result });
-
-        // Call your existing function to set the background image
-        setBodyBackground(event.target.result);
-      };
-
-      // Read the selected file as a data URL
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const setBodyBackground = (imageUrl: string | ArrayBuffer | null) => {
-    // Your existing function to set the background image
-    document.body.style.cssText = `background-image: url("${imageUrl}")`;
-  };
   const onSignup = async () => {
+    const formData = new FormData();
+    formData.append("fullname", user.fullname);
+    formData.append("username", user.username);
+    formData.append("avtar", user.profile_picture);
+    formData.append("email", user.email);
+    formData.append("password", user.password);
     console.log(user);
     if (
       user.email == "" ||
@@ -68,7 +50,7 @@ export default function SignupPage() {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 1000,
       });
-      const response = await axios.post("/api/users/signup", user);
+      const response = await axios.post("/api/users/signup", formData);
       console.log("Signup success", response.data);
       toast.success("Account Created", {
         position: toast.POSITION.TOP_CENTER,
@@ -111,6 +93,7 @@ export default function SignupPage() {
           {loading ? "Processing" : "Signup"}
         </h1>
         <Divider />
+
         <Input
           variant="underlined"
           type="fullname"
@@ -132,9 +115,8 @@ export default function SignupPage() {
           variant="underlined"
           label="profile_picture"
           placeholder="Add an image"
-          // onChange={(e) =>
-          //   setUser({ ...user, profile_picture: e.target.files[0] })
-          onChange={handleFileChange}
+          onChange={(e) =>
+            setUser({ ...user, profile_picture: e.target.files[0] })}
         />
 
         <Input

@@ -16,14 +16,15 @@ const SideDashboard = ({User}:any) =>{
   console.log(User)
 return(
    <div className=" bg-inherit min-w-[250px] shrink z-10 max-w-[300px] top-0 sticky">
-    <div className="text-white h-full mr-24 gap-4">
-      <div className=" flex m-2 p-2 gap-4 mb-5 z-10 top-0">
+    <div className="text-white h-full mr-20 gap-4">
+      <div className=" flex m-2 px-2 gap-4 mb-5 z-10 top-0 w-full">
         <Avatar
           src="https://i.pinimg.com/originals/1e/c4/62/1ec4624b6606c8c358e41c85ccdd20a9.jpg"
           size="md"
           isBordered
+          className="rounded-full"
         />
-        <h1 className="font-semibold self-center">{User?.fullname}</h1>
+        <h1 className="font-semibold self-center text-center opacity-70">{User?.fullname}</h1>
       </div>
     </div>
     <span className="text-white opacity-70 text-xs lg:ml-4 ">INDEX LIST </span>

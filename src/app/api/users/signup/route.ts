@@ -7,11 +7,32 @@ import { sendEmail } from "@/helpers/mailer";
 connect();
 
 export async function POST(request: NextRequest) {
+  function formDataToObject(formData: any) {
+    const object = {};
+    formData.forEach((value: any, key: any) => {
+      object[key] = value;
+    });
+    console.log(object);
+    return object;
+  }
   try {
-    const reqBody = await request.json();
-    const { fullname, username, email, password } = reqBody;
+    console.log(request);
+    const reqs = await request.formData();
+    // formDataToObject(reqs)
+    // console.log(reqs);
+    // const reqBody = await request.json();
+    const data = formDataToObject(reqs);
+    const {
+      fullname,
+      username,
+      email,
+      password,
+      avtar,
+    } =
+      data;
 
-    console.log(reqBody);
+    console.log(avtar);
+    console.log(fullname);
 
     //check if user already exists
     const user = await User.findOne({ email });
@@ -39,7 +60,12 @@ export async function POST(request: NextRequest) {
 
     //send verification email
 
-    await sendEmail({ fullname ,  email, emailType: "VERIFY", userId: savedUser._id });
+    await sendEmail({
+      fullname,
+      email,
+      emailType: "VERIFY",
+      userId: savedUser._id,
+    });
 
     return NextResponse.json({
       message: "User created successfully",
@@ -50,3 +76,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+// export type User = {
+//   name:string,
+//   fullname:string,
+//   avtar:File,
+//   email:string,
+//   password:string
+// }
