@@ -16,8 +16,8 @@ const page = () => {
           className="bg-cover bg-center min-h bg-opacity-60 flex justify-center my-5"
         >
           {/* Content of the first div */}
-          <h1 className="font-mono font-medium text-2xl text-right w-1/2">
-            "Welcome to our{" "}
+          <h1 className="font-mono font-medium text-2xl text-left w-1/2">
+            "Welcome to our TradeIn a{" "}
             <span className="text-blue-600">Paper Stock Trading App</span> ,
             where financial exploration meets risk-free investing. Dive into the
             world of stock trading without real{" "}
