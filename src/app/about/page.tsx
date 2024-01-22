@@ -4,6 +4,7 @@ import Footer from "@/components/Footer/Footer";
 import TradeInNavbar from "@/components/Navbar/Navbar";
 import { Fade } from "react-awesome-reveal";
 import React from "react";
+import { Zoom, Slide } from "react-awesome-reveal";
 const page = () => {
   return (
     <>
@@ -82,28 +83,35 @@ const contributors: Contributor[] = [
 ];
 
 export const ContributorCards = () => (
-  <div className="flex gap-6 mx-5 flex-wrap">
+  <div className="flex gap-6 mx-5">
     {contributors.map((contributor, index) => (
-      <div
+      <Zoom
         key={index}
-        className="bg-default-50 p-4 rounded-md shadow-md flex-1"
+        delay={index * 200} // Adjust the delay for staggered appearance
       >
-        {/* Image */}
-        <div className="flex gap-2">
-          <img
-            src={contributor.image}
-            alt={contributor.name}
-            className="w-40 h-44 object- mb-4 rounded-md"
-          />
-          <h2 className="font-medium opacity-70">{contributor.contribution}</h2>
+        <div
+          className="bg-default-50 bg-opacity-90 p-4 rounded-md shadow-md"
+        >
+          {/* Image */}
+          <div className="flex gap-2">
+            <img
+              src={contributor.image}
+              alt={contributor.name}
+              className="w-40 h-44 object- mb-4 rounded-md"
+            />
+            <h2 className="font-medium opacity-70">
+              {contributor.contribution}
+            </h2>
+          </div>
+
+          {/* Name */}
+          <h2 className="text-xl font-semibold mb-2">{contributor.name}</h2>
+
+          {/* Role */}
+          <p className="text-gray-600">{contributor.role}</p>
         </div>
-
-        {/* Name */}
-        <h2 className="text-xl font-semibold mb-2">{contributor.name}</h2>
-
-        {/* Role */}
-        <p className="text-gray-600">{contributor.role}</p>
-      </div>
+      </Zoom>
     ))}
   </div>
 );
+
