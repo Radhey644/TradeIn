@@ -7,6 +7,7 @@ import SideDashboard from "@/components/SideDashboard/SideDashboard";
 import Price from "@/components/Stock Graph & Price/Price";
 import { useEffect, useState } from "react";
 import Trending_Marque from "@/components/Marquee-card/TrendingMarquee";
+import { debounce } from "@/helpers/debounce";
 
 export default function Page() {
   const [trending, setTrending] = useState([]);
@@ -21,35 +22,34 @@ export default function Page() {
   console.log(coins);
 
   console.log(trending);
+  const fetchTrendingData = () => {
+    fetch(`https://api.coingecko.com/api/v3/search/trending`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((responseData) => {
+        console.log(responseData);
+        setTrending(responseData.coins);
+      })
+      .catch((err) => {
+        console.log("Error occurred:", err);
+      });
+  };
+  const fetchUser = () => {
+    fetch("/api/users/me", {
+      method: "GET",
+    })
+      .then(async (res) => {
+        console.log(res);
+        const result = await res.json();
+        console.log(result.data);
+        setUserData(result.data);
+      })
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
-    const fetchData = () => {
-      fetch(`https://api.coingecko.com/api/v3/search/trending`, {
-        method: "GET",
-      })
-        .then((res) => res.json())
-        .then((responseData) => {
-          console.log(responseData);
-          setTrending(responseData.coins);
-        })
-        .catch((err) => {
-          console.log("Error occurred:", err);
-        });
-    };
-
-    const fetchUser = () => {
-      fetch("/api/users/me", {
-        method: "GET",
-      })
-        .then(async (res) => {
-          console.log(res);
-          const result = await res.json();
-          console.log(result.data);
-          setUserData(result.data);
-        })
-        .catch((err) => console.log(err));
-    };
-    fetchData();
-    fetchUser();
+    debounce(fetchTrendingData(), 3000);
+    debounce(fetchUser(), 3000);
   }, []);
   return (
     <>

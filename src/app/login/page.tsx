@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-
-
 export default function LoginPage() {
   const router = useRouter();
   const [user, setUser] = React.useState({
@@ -20,27 +18,24 @@ export default function LoginPage() {
     try {
       toast.warn("Logging In !", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose:1000
-
+        autoClose: 1000,
       });
       setLoading(true);
       const response = await axios.post("/api/users/login", user);
-      console.log("Login success", response.data); 
+      console.log("Login success", response.data);
       // router.push("/profile");
       toast.success("Logged In ", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose:500
+        autoClose: 500,
       });
       router.push("/");
-    } 
-    catch (error:any) {
-      console.log(error)
+    } catch (error: any) {
+      console.log(error);
       toast.error(`${error.response.data.error}`, {
         position: toast.POSITION.TOP_CENTER,
-        autoClose:1000
+        autoClose: 1000,
       });
-      }
-     finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -54,90 +49,65 @@ export default function LoginPage() {
   }, [user]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      {/* Create a centered box to wrap all content */}
+    <div className="flex min-h-screen py-2">
       <div
-        className="border border-gray-300 p-4 rounded-lg"
+        className="w-2/5 min-h-svh flex justify-center items-center"
         style={{
-          width: "600px",
-          height: "400px",
-          backgroundColor: "rgba(31, 41, 55, 0.5)",
+          backgroundImage: "url('/login.jpg')",
         }}
       >
-        <h1 className="text-2xl font-bold mb-4">
-        <i className="fa-solid fa-right-to-bracket"></i>
-          {loading ? "Processing" : "Login"}
-        </h1>
-        <hr className="my-4" />
+        left
+      </div>
+      <div className="w-3/5 min-h-svh flex justify-center">
+        {/* Create a centered box to wrap all content */}
+        <div className="p-4 rounded-lg my-auto">
+          <div className="mb-9">
+          <h1 className="text-2xl font-bold mb-4">
+            <i className="fa-solid fa-right-to-bracket"></i>
+            {loading ? "Processing" : "Login"}
+          </h1>
+          <div className="text-sm mt-4">
+            New to TradeIn?
+            <Link href="/signup" className="text-blue-500 hover:underline">
+              {" "}
+              Sign up for an account
+            </Link>
+          </div>
+          </div>
+          <hr className="my-4" />
 
-        <div className="flex flex-col space-y-4">
-  <label htmlFor="email" className="text-sm font-semibold">
-    Email
-  </label>
-  <input
-    className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 text-black"
-    id="email"
-    type="text"
-    value={user.email}
-    onChange={(e) => setUser({ ...user, email: e.target.value })}
-    placeholder="Enter your email"
-  />
+          <div className="flex flex-col space-y-4">
+            <label htmlFor="email" className="text-sm font-semibold">
+              Email
+            </label>
+            <input
+              className="p-2 border-1 border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 bg-black"
+              id="email"
+              type="text"
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+            />
 
-  <label htmlFor="password" className="text-sm font-semibold">
-    Password
-  </label>
-  <input
-    className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 text-black"
-    id="password"
-    type="password"
-    value={user.password}
-    onChange={(e) => setUser({ ...user, password: e.target.value })}
-    placeholder="Enter your password"
-  />
+            <label htmlFor="password" className="text-sm font-semibold">
+              Password
+            </label>
+            <input
+              className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 bg-black"
+              id="password"
+              type="password"
+              value={user.password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
+            />
 
-  <button
-    onClick={onLogin}
-    className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-700 focus:outline-none"
-  >
-    Login
-  </button>
-</div>
-
-
-        <div className="text-sm mt-4">
-          <Link href="/signup" className="text-blue-500 hover:underline">
-            Go To Sign Up
-          </Link>
+            <button
+              onClick={onLogin}
+              className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700 focus:outline-none"
+            >
+              Login
+            </button>
+          </div>
         </div>
       </div>
-      {/* <h1>{loading ? "Logging you in.." : "Login"}</h1>
-      <hr />
-
-      <label htmlFor="email">email</label>
-      <input
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-        id="email"
-        type="text"
-        value={user.email}
-        onChange={(e) => setUser({ ...user, email: e.target.value })}
-        placeholder="email"
-      />
-      <label htmlFor="password">password</label>
-      <input
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-        id="password"
-        type="password"
-        value={user.password}
-        onChange={(e) => setUser({ ...user, password: e.target.value })}
-        placeholder="password"
-      />
-      <button
-        onClick={onLogin}
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-      >
-        Login here
-      </button>
-      <Link href="/signup">Visit Signup page</Link> */}
     </div>
   );
 }

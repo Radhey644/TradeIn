@@ -39,7 +39,7 @@ export default function SearchBar() {
       .catch((err) => {
         console.log("Error occurred:", err);
       });
-  }, 2000); // Adjust the debounce delay (1 second in this case)
+  }, 3000); // Adjust the debounce delay (1 second in this case)
   const debouncedFetchTrendingData = () => {
     setIsloading(true);
     fetch(`https://api.coingecko.com/api/v3/search/trending`, {
