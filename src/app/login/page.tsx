@@ -49,30 +49,32 @@ export default function LoginPage() {
   }, [user]);
 
   return (
-    <div className="flex min-h-screen py-2">
+    <div className="flex min-h-screen">
       <div
-        className="w-2/5 min-h-svh flex justify-center items-center"
+        className="w-2/5 min-h-svh flex justify-center items-center bg-cover"
         style={{
-          backgroundImage: "url('/login.jpg')",
+          backgroundImage: "url('/login.webp')",
         }}
       >
-        left
+        <span className="font-bold text-cyan-50 text-4xl font-sans ml-auto w-2/3">
+          Trade risk Free without Limits.
+        </span>
       </div>
       <div className="w-3/5 min-h-svh flex justify-center">
         {/* Create a centered box to wrap all content */}
-        <div className="p-4 rounded-lg my-auto">
+        <div className="p-4 rounded-lg my-auto w-1/2">
           <div className="mb-9">
-          <h1 className="text-2xl font-bold mb-4">
-            <i className="fa-solid fa-right-to-bracket"></i>
-            {loading ? "Processing" : "Login"}
-          </h1>
-          <div className="text-sm mt-4">
-            New to TradeIn?
-            <Link href="/signup" className="text-blue-500 hover:underline">
-              {" "}
-              Sign up for an account
-            </Link>
-          </div>
+            <h1 className="text-3xl font-bold mb-4">
+              <i className="fa-solid fa-right-to-bracket"></i>
+              {loading ? "Processing" : "Login"}
+            </h1>
+            <div className="text-md mt-4">
+              New to TradeIn?
+              <Link href="/signup" className="text-blue-500 hover:underline">
+                {" "}
+                Sign up for an account
+              </Link>
+            </div>
           </div>
           <hr className="my-4" />
 
