@@ -20,8 +20,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="eng">
+      <title>TradeIn</title>
       <head>
-        <title>TradeIn</title>
         <link rel="shortcut icon" href="/logo.jpg" type="image/x-icon" />
         <link
           rel="stylesheet"
