@@ -68,7 +68,7 @@ export default function LoginPage() {
               <i className="fa-solid fa-right-to-bracket"></i>
               {loading ? "Processing" : "Login"}
             </h1>
-            <div className="text-md mt-4">
+            <div className="text-sm mt-4">
               New to TradeIn?
               <Link href="/signup" className="text-blue-500 hover:underline">
                 {" "}
