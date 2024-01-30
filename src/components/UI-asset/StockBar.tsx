@@ -1,9 +1,24 @@
 "use client";
+import { Stock, buyStock } from "@/redux/features/user/userSlice";
 import { Button } from "@nextui-org/button";
 import React, { useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
 const StockBar = () => {
+  const selectPortfolio = (state:any) => state.portfolio;
+  const user = useSelector(selectPortfolio);
+  console.log(user);
   const [watchlist, setWatchlist] = useState(false);
+  const dispatch = useDispatch();
+  const handleBuyStock = () => {
+    const stock: Stock = {
+      symbol: "AAPL",
+      company: "Apple Inc.",
+      quantity: 1,
+      averagePrice: 150.25,
+    };
+    dispatch(buyStock(stock));
+    console.log(user)
+  };
   return (
     <div className="flex-row  p-3 text-white gap-4 flex-1">
       <div className="float-left">
@@ -24,8 +39,10 @@ const StockBar = () => {
       </div>
       {/* this will be a group of buttons to sell and buy stocks */}
       <div className="flex gap-2 flex-1 p-2 items-center space-x-2 justify-end">
-        
-        <Button className="bg-green-300 px-4 rounded-md text-black font-bold text-sm">
+        <Button
+          className="bg-green-300 px-4 rounded-md text-black font-bold text-sm"
+          onClick={handleBuyStock}
+        >
           Buy
         </Button>
         <Button className="bg-red-400 px-4 rounded-md text-black font-bold text-sm">

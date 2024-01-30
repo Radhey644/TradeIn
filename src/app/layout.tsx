@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import NextuiProvider from "@/components/Providers/NextUIProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import StoreProvider from "@/components/Providers/StoreProvider";
+
 // import Footer from "@/components/Footer/Footer";
 // import TradeInNavbar from "@/components/Navbar/Navbar";
 
@@ -30,10 +32,12 @@ export default function RootLayout({
         />
       </head>
       <body className="max-w-[2000px] m-auto">
-        <NextuiProvider>
-          {children}
-          <ToastContainer theme="dark" />
-        </NextuiProvider>
+        <StoreProvider>
+          <NextuiProvider>
+            {children}
+            <ToastContainer theme="dark" />
+          </NextuiProvider>
+        </StoreProvider>
       </body>
     </html>
   );

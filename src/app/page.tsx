@@ -8,7 +8,7 @@ import Price from "@/components/Stock Graph & Price/Price";
 import { useEffect, useState } from "react";
 import Trending_Marque from "@/components/Marquee-card/TrendingMarquee";
 import { debounce } from "@/helpers/debounce";
-
+import { useDispatch, useSelector } from "react-redux";
 export default function Page() {
   const [trending, setTrending] = useState([]);
   const [UserData, setUserData] = useState();
