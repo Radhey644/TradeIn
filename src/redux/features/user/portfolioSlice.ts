@@ -3,7 +3,7 @@ const exampleStock: Stock = {
   symbol: "AAPL",
   company: "Apple Inc.",
   quantity: 2,
-  averagePrice: 150.25,
+  price: 150.25,
 };
 const initialState = {
   user: null,
@@ -16,7 +16,9 @@ const portfolioSlice = createSlice({
   initialState,
   reducers: {
     buyStock: (state, action) => {
-      const { stockSymbol, quantity, companyName, price } = action.payload;
+      console.log(action)
+      const { symbol, quantity, company, price } = action.payload;
+      console.log(symbol)
       const totalCost = quantity * price;
 
       if (state.balance >= totalCost) {
@@ -25,22 +27,20 @@ const portfolioSlice = createSlice({
 
         // Check if the user already owns the stock
         const existingStock = state.stocks.find(
-          (stock) => stock.symbol === stockSymbol
+          (stock) => stock.symbol === symbol
         );
 
         if (existingStock) {
           // Update the existing stock's quantity and average price
           existingStock.quantity += quantity;
-          existingStock.averagePrice =
-            (existingStock.averagePrice * existingStock.quantity + totalCost) /
-            existingStock.quantity;
+    
         } else {
           // Add a new stock to the portfolio
           state.stocks.push({
-            symbol: stockSymbol,
-            company: companyName,
+            symbol: symbol,
+            company: company,
             quantity,
-            averagePrice: price,
+            price: price,
           });
         }
       } else {
@@ -79,5 +79,5 @@ export type Stock = {
   symbol: string; // Stock symbol (e.g., AAPL, GOOGL)
   company: string; // Name of the company
   quantity: number; // Number of stocks owned
-  averagePrice: number; // Average price per stock
+  price: number; // Average price per stock
 };

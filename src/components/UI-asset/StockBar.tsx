@@ -1,23 +1,23 @@
 "use client";
-import { Stock, buyStock } from "@/redux/features/user/userSlice";
+import { Stock, buyStock } from "@/redux/features/user/portfolioSlice";
 import { Button } from "@nextui-org/button";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 const StockBar = () => {
-  const selectPortfolio = (state:any) => state.portfolio;
+  const selectPortfolio = (state: any) => state.portfolio;
   const user = useSelector(selectPortfolio);
   console.log(user);
   const [watchlist, setWatchlist] = useState(false);
   const dispatch = useDispatch();
+  const stock: Stock = {
+    symbol: "CISCO",
+    company: "Cisco Inc.",
+    quantity: 10,
+    price: 200,
+  };
   const handleBuyStock = () => {
-    const stock: Stock = {
-      symbol: "AAPL",
-      company: "Apple Inc.",
-      quantity: 1,
-      averagePrice: 150.25,
-    };
     dispatch(buyStock(stock));
-    console.log(user)
+    console.log(user);
   };
   return (
     <div className="flex-row  p-3 text-white gap-4 flex-1">

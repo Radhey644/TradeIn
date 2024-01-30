@@ -13,7 +13,7 @@ import {
 } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Stock } from "@/redux/features/user/userSlice";
+import { Stock } from "@/redux/features/user/portfolioSlice";
 const SideDashboard = ({ User }: any) => {
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.portfolio);
