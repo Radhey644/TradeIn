@@ -10,82 +10,50 @@ import Trending_Marque from "@/components/Marquee-card/TrendingMarquee";
 import { debounce } from "@/helpers/debounce";
 import { useDispatch, useSelector } from "react-redux";
 export default function Page() {
-  const [trending, setTrending] = useState([]);
-  const [UserData, setUserData] = useState();
-  const coins = trending?.map((coin: any, i: number) => {
-    return {
-      id: coin.item.coin_id,
-      image: coin.item.small,
-      name: coin.item.name,
-    };
-  });
-  console.log(coins);
+//   const [trending, setTrending] = useState([]);
+//   const [UserData, setUserData] = useState();
+//   const coins = trending?.map((coin: any, i: number) => {
+//     return {
+//       id: coin.item.coin_id,
+//       image: coin.item.small,
+//       name: coin.item.name,
+//     };
+//   });
+//   console.log(coins);
 
-  console.log(trending);
-  const fetchTrendingData = () => {
-    fetch(`https://api.coingecko.com/api/v3/search/trending`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((responseData) => {
-        console.log(responseData);
-        setTrending(responseData.coins);
-      })
-      .catch((err) => {
-        console.log("Error occurred:", err);
-      });
-  };
-  const fetchUser = () => {
-    fetch("/api/users/me", {
-      method: "GET",
-    })
-      .then(async (res) => {
-        console.log(res);
-        const result = await res.json();
-        console.log(result.data);
-        setUserData(result.data);
-      })
-      .catch((err) => console.log(err));
-  };
-  useEffect(() => {
-    debounce(fetchTrendingData(), 3000);
-    debounce(fetchUser(), 3000);
-  }, []);
+//   console.log(trending);
+//   const fetchTrendingData = () => {
+//     fetch(`https://api.coingecko.com/api/v3/search/trending`, {
+//       method: "GET",
+//     })
+//       .then((res) => res.json())
+//       .then((responseData) => {
+//         console.log(responseData);
+//         setTrending(responseData.coins);
+//       })
+//       .catch((err) => {
+//         console.log("Error occurred:", err);
+//       });
+//   };
+//   const fetchUser = () => {
+//     fetch("/api/users/me", {
+//       method: "GET",
+//     })
+//       .then(async (res) => {
+//         console.log(res);
+//         const result = await res.json();
+//         console.log(result.data);
+//         setUserData(result.data);
+//       })
+//       .catch((err) => console.log(err));
+//   };
+//   useEffect(() => {
+//     debounce(fetchTrendingData(), 3000);
+//     debounce(fetchUser(), 3000);
+//   }, []);
   return (
     <>
-      {/* <TradeInNavbar />
-
-      <div className="flex flex-col sm:flex-row bg-black min-h-screen">
-    
-        <div className="shadow-lg border-r-2 border-slate-800 sm:block flex-shrink-0 w-64">
-          <SideDashboard User={UserData} />
-        </div>
-
-    
-        <div className="flex-1 max-w-[1400px]">
-          <Trending_Marque data={coins} />
-
       
-          <div className="sm:flex gap-2 justify-between items-center mb-4">
-            <StockBar />
-          </div>
-
-         
-          <div className="sm:flex gap-2 xs:flex-col flex-wrap justify-between">
-            
-            <div className="sm:w-3/4">
-              <Graph data={data} />
-            </div>
-
-           
-            <div className="sm:w-1/4">
-              <Price />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <Footer /> */}
     </>
   );
 }

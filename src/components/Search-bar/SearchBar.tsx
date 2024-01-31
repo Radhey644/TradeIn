@@ -25,46 +25,37 @@ export default function SearchBar() {
   const [loading, setIsloading] = useState(true);
 
   // Create a debounced version of the function that makes API requests
-  const debouncedFetchData = debounce((searchQuery: string) => {
-    setIsloading(true);
-    fetch(`https://api.coingecko.com/api/v3/search?query=${searchQuery}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((responseData) => {
-        console.log(responseData);
-        setData(responseData.coins);
-        setIsloading(false);
+  const debouncedFetchData = debounce((searchQuery: string | null) => {
+    if (searchQuery) {
+      setIsloading(true);
+      const apiUrl =
+        searchQuery === "trending"
+          ? "https://api.coingecko.com/api/v3/search/trending"
+          : `https://api.coingecko.com/api/v3/search?query=${searchQuery}`;
+
+      fetch(apiUrl, {
+        method: "GET",
       })
-      .catch((err) => {
-        console.log("Error occurred:", err);
-      });
-  }, 3000); // Adjust the debounce delay (1 second in this case)
-  const debouncedFetchTrendingData = () => {
-    setIsloading(true);
-    fetch(`https://api.coingecko.com/api/v3/search/trending`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((responseData) => {
-        console.log(responseData);
-        setData(responseData.coins);
-        setIsloading(false);
-      })
-      .catch((err) => {
-        console.log("Error occurred:", err);
-      });
-  }; // Adjust the debounce delay (1 second in this case)
+        .then((res) => res.json())
+        .then((responseData) => {
+          console.log(responseData);
+          setData(responseData.coins);
+          setIsloading(false);
+        })
+        .catch((err) => {
+          console.log("Error occurred:", err);
+        });
+    }
+  }, 3000);
 
   // Effect to watch for changes in the 'query' state
   useEffect(() => {
-    if (query.length > 0) {
-      debouncedFetchData(query);
-    }
+    debouncedFetchData(query);
   }, [query]);
 
+  // Initial fetch for trending data
   useEffect(() => {
-    debouncedFetchTrendingData();
+    debouncedFetchData("trending");
   }, []);
 
   return (
@@ -110,7 +101,7 @@ export default function SearchBar() {
                   ) : (
                     data.map((coin, i) => {
                       if (i < 8) {
-                        return <StockCard stock={coin} />;
+                        return <StockCard stock={coin} onClick={onClose} />;
                       }
                     })
                   )}

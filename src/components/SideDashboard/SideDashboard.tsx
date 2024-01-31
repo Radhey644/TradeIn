@@ -17,8 +17,17 @@ import { Stock } from "@/redux/features/user/portfolioSlice";
 const SideDashboard = ({ User }: any) => {
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.portfolio);
+
   console.log(User);
   console.log(user);
+  useEffect(() => {
+    // Scroll to the bottom when user.stocks changes
+    const holdingElement = document.getElementById("holdings");
+
+    if (holdingElement) {
+      holdingElement.scrollTop = holdingElement.scrollHeight;
+    }
+  }, [user.stocks]);
   return (
     <div className=" bg-inherit min-w-[250px] shrink z-10 max-w-[300px] top-0 sticky">
       <div className="text-white h-full mr-20 gap-4">
@@ -114,15 +123,20 @@ const SideDashboard = ({ User }: any) => {
                 </>
               }
             >
-              <Listbox aria-label="Actions" onAction={(key) => alert(key)}>
-                {
-                  user.stocks.map((item:Stock,i:number)=>{
+              <Listbox
+                id="holdings"
+                aria-label="Actions"
+                onAction={(key) => alert(key)}
+                className="max-h-[150px] scrollbar-hide overflow-y-scroll"
+              >
+                {user.stocks.map((item: Stock, i: number) => {
                   return (
-                    <ListboxItem key={i}>{item.symbol}{" "}{item.quantity}</ListboxItem>
-                  )
-                  })
-                }
-                
+                    <ListboxItem key={i}>
+                      {item.symbol} {item.quantity}
+                    </ListboxItem>
+                  );
+                })}
+
                 {/* <ListboxItem key="new">New file</ListboxItem>
               
               <ListboxItem key="edit">Edit file</ListboxItem>

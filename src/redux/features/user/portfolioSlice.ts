@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 const exampleStock: Stock = {
   symbol: "AAPL",
   company: "Apple Inc.",
@@ -7,7 +8,7 @@ const exampleStock: Stock = {
 };
 const initialState = {
   user: null,
-  balance: 10000, // Initial balance in dollars
+  balance: 100000, // Initial balance in dollars
   stocks: <Stock[]>[exampleStock], // List of stocks the user owns
 };
 
@@ -16,9 +17,9 @@ const portfolioSlice = createSlice({
   initialState,
   reducers: {
     buyStock: (state, action) => {
-      console.log(action)
+      console.log(action);
       const { symbol, quantity, company, price } = action.payload;
-      console.log(symbol)
+      console.log(symbol);
       const totalCost = quantity * price;
 
       if (state.balance >= totalCost) {
@@ -33,7 +34,6 @@ const portfolioSlice = createSlice({
         if (existingStock) {
           // Update the existing stock's quantity and average price
           existingStock.quantity += quantity;
-    
         } else {
           // Add a new stock to the portfolio
           state.stocks.push({
@@ -44,16 +44,21 @@ const portfolioSlice = createSlice({
           });
         }
       } else {
+        toast.error("Insufficient funds to buy the stock", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 500,
+        });
         console.log("Insufficient funds to buy the stock");
       }
     },
     sellStock: (state, action) => {
-      const { stockSymbol, quantity, price } = action.payload;
+      console.log(action);
+      const { symbol, quantity, company, price } = action.payload;
       const sellingValue = quantity * price;
 
       // Find the stock in the portfolio
       const stockIndex = state.stocks.findIndex(
-        (stock) => stock.symbol === stockSymbol
+        (stock) => stock.symbol === symbol
       );
 
       if (stockIndex !== -1 && state.stocks[stockIndex].quantity >= quantity) {

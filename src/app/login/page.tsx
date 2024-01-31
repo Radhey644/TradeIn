@@ -36,7 +36,7 @@ export default function LoginPage() {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 500,
       });
-      router.push("/");
+      router.push("/home");
     } catch (error: any) {
       console.log(error);
       toast.error(`${error.response.data.error}`, {

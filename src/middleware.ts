@@ -25,7 +25,8 @@ export const config = {
   matcher: [
     "/",
     "/coin",
-    "/coin/:id*",
+    "/home",
+    "/home/coin/:id*",
     '/portfolio',
     '/profile',
     '/about',

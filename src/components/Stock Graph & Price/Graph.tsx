@@ -12,7 +12,7 @@ import {
   AreaChart,
   Area,
 } from "recharts";
-const Graph = ({ data }: Array<Object>) => {
+const Graph = ({ data }:any) => {
   return (
     <>
       {/* <LineChart
@@ -32,7 +32,7 @@ const Graph = ({ data }: Array<Object>) => {
         <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
       </LineChart> */}
         <AreaChart
-          width={800}
+          width={650}
           height={450}
           data={data}
           margin={{

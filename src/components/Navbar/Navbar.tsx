@@ -43,13 +43,13 @@ const TradeInNavbar = () => {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="flex justify-between">
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="flex w-full ">
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
-        <Link href="/" color="foreground">
+        <Link href="/home" color="foreground">
           <NavbarBrand>
             <AcmeLogo />
             <p className="font-bold text-inherit">TradeIn</p>

@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Sidebar.tsx", "src/app/coin/page.jsx", "src/app/coin/[symbol]/page.tsx", "src/app/login/Mail.js", "src/helpers/debounce.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Sidebar.tsx", "src/app/home/coin/page.jsx", "src/app/home/coin/[id]/page.tsx", "src/app/login/Mail.js", "src/helpers/debounce.js"],
   "exclude": ["node_modules"]
 }

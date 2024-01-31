@@ -5,7 +5,7 @@ const Trending_Marque = ({data}:any) => {
   console.log(data)
  return (
   <div>
-    <Marquee>
+    <Marquee pauseOnHover className='cursor-pointer'>
     {
       data?(
         data.map((coin: any)=>{
