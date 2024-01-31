@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Link } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -15,6 +15,14 @@ export default function LoginPage() {
   const [loading, setLoading] = React.useState(false);
 
   const onLogin = async () => {
+    if(user.email==""||user.password=="")
+    {
+      toast.error("Please fill the feilds !", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
+      return
+    }
     try {
       toast.warn("Logging In !", {
         position: toast.POSITION.TOP_CENTER,
@@ -102,12 +110,15 @@ export default function LoginPage() {
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
 
-              <button
+              <Button
+                size="lg"
+                color="primary"
+                variant="shadow"
                 onClick={onLogin}
-                className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700 focus:outline-none"
+                className=" text-white p-2 rounded-full focus:outline-none"
               >
                 Login
-              </button>
+              </Button>
             </div>
           </div>
         </div>

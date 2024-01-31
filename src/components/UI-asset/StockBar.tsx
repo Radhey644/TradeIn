@@ -10,7 +10,7 @@ const StockBar = () => {
   const [watchlist, setWatchlist] = useState(false);
   const dispatch = useDispatch();
   const stock: Stock = {
-    symbol: "CISCO",
+    symbol: "CISCO", 
     company: "Cisco Inc.",
     quantity: 10,
     price: 200,
