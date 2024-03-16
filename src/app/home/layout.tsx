@@ -53,10 +53,11 @@ export default function RootLayout({
     debounce(fetchTrendingData(), 3000);
     debounce(fetchUser(), 3000);
   }, []);
-  return (
-    <div className="min-h-screen">
+  return (<>
+ 
+   
       <TradeInNavbar />
-
+ <div className="min-h-screen">
       <div className="flex flex-col sm:flex-row bg-black ">
         {/* Left part of homepage (SideDashboard) */}
         <div className="sticky top-0 border-r-2 border-slate-800 sm:block sm:flex-shrink-0 shadow-lg">
@@ -90,8 +91,9 @@ export default function RootLayout({
           </div>
         </div>
       </div>
-
-      <Footer />
-    </div>
+      </div>
+      <Footer /> 
+      </>
+    
   );
 }

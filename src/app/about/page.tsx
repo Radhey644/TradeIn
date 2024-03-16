@@ -35,9 +35,19 @@ const page = () => {
           style={{ backgroundImage: 'url("/about.avif")' }}
           className="bg-cover bg-center min-h bg-opacity-60"
         >
-          <div className="flex justify-center my-3">
-            <span className="font-sans text-3xl font-medium"> Our Team</span>
-          </div>
+        <div className="flex justify-center my-3">
+  <span className="font-sans text-3xl font-medium flex">
+    { "Our Team".split('').map((letter, index) => (
+      <Fade direction="up" key={index} delay={index * 100}>
+        <span>{letter}</span>
+      </Fade>
+    ))}
+  </span>
+</div>
+
+
+
+
 
           {/* Content of the second div */}
           <Fade direction="up">
@@ -90,19 +100,20 @@ export const ContributorCards = () => (
         delay={index * 200} // Adjust the delay for staggered appearance
       >
         <div
-          className="bg-default-50 bg-opacity-90 p-4 rounded-md shadow-md"
+          className="bg-default-50 bg-opacity-90 p-4 rounded-md shadow-md relative overflow-hidden transition duration-300 hover:shadow-lg hover:transform hover:rotate-3"
         >
           {/* Image */}
           <div className="flex gap-2">
             <img
               src={contributor.image}
               alt={contributor.name}
-              className="w-40 h-44 object- mb-4 rounded-md"
+              className="w-40 h-44 object-cover mb-4 rounded-md"
             />
             <h2 className="font-medium opacity-70">
               {contributor.contribution}
             </h2>
-          </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black opacity-0 hover:opacity-60 transition-opacity"></div>
+          </div>   
 
           {/* Name */}
           <h2 className="text-xl font-semibold mb-2">{contributor.name}</h2>

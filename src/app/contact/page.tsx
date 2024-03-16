@@ -16,7 +16,11 @@ const page = () => {
           <Input type="email" variant="underlined" label="Email" />
           <Input type="subject" variant="underlined" label="Subject" />
           <Input type="message" variant="underlined" label="Message" />
-          <Button variant="shadow" className="float-left bg-primary-200">Submit</Button>
+          <Button variant="shadow" className="float-left" style={{backgroundColor: 'rgba(3, 89, 243, 0.7)',color: '#fff',boxShadow: '0 2px 4px rgba(100, 0, 0,0)', // Add a subtle shadow
+}}
+>
+  Submit
+</Button>
         </div>
         <div className="flex-col p-4 bg-slate-900 rounded-r-lg w-1/3">
           <h1 className="text-2xl font-semibold"> Contact information</h1>
