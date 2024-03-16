@@ -1,10 +1,12 @@
 "use client";
-import Card from "@/components/Contributor-Card/Card";
-import Footer from "@/components/Footer/Footer";
-import TradeInNavbar from "@/components/Navbar/Navbar";
 import { Fade } from "react-awesome-reveal";
 import React from "react";
-import { Zoom, Slide } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
+
+// Importing components for client-side rendering
+import TradeInNavbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
+import Card from "@/components/Contributor-Card/Card";
 const page = () => {
   return (
     <>
